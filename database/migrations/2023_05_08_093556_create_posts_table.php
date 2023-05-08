@@ -15,22 +15,20 @@ return new class extends Migration
             $table->id();
             $table->string('title_fr');
             $table->string('title_en');
-            $table->string('slug');
+            $table->string('slag');
             $table->text('body_fr');
             $table->text('body_en');
             $table->boolean('premium')->default(0);
-            $table->boolean('published');
+            $table->boolean('published')->default(1);
             $table->string('photo');
             $table->foreignId('admin_id')->constrained()->onDelete('cascade');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
-            $table->string('photo');
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     * @return void
      */
     public function down(): void
     {
