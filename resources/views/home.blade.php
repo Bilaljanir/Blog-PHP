@@ -1,19 +1,73 @@
 @extends('layouts.main')
 
 @section('title')
-Home
+    @if (isset($category))
+        {{ucfirst($category->name_en)}} posts
+    @elseif(isset($tag))
+        {{ucfirst($tag->name)}} posts
+    @else
+        Home
+    @endif
 @endsection
 
 @section('content')
-
     <div class="row my-5">
-        <div class="col md-8">
-    Posts
+        <div class="col-md-8">
+            <div class="card p-4 ">
+                <div class="row">
+    @isset($postsPremium)
+    @foreach($postsPremium as $post)
+    <div class="col-md-4 mb-2">
+        <div class="card h-100">
+            <img src="{{$posts->photo}}"
+                 class="card-img-top"
+                 alt="{{$post->title_en}}">
+            <div class="card-body">
+                <div class="card-title">
+                    {{$post_title_en}}
+
+                </div>
+                <p class="card-text">
+                    {{  Str::limit($post->body_en, 100)}}
+                </p>
+                <a href="{{route('posts.show',$post)}}" class="btn btn-primary"></a>
+            </div>
         </div>
-        <div class="col md-8">
-        categories
+    </div>
+
+    @endforeach
+    @endisset
+            </div>
+            <div class="row">
+                    @foreach($posts as $post)
+                        <div class="col-md-4 mb-2">
+                            <div class="card h-100">
+                                <img src="{{$post->photo}}"
+                                     class="card-img-top"
+                                     alt="{{$post->title_en}}">
+                                <div class="card-body">
+                                    <div class="card-title">
+                                        {{$post->title_en}}
+
+                                    </div>
+                                    <p class="card-text">
+                                        {{  Str::limit($post->body_en, 100)}}
+                                    </p>
+                                    <a href="{{route('posts.show',$post)}}" class="btn btn-primary">
+                                        View
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    @endforeach
+            </div>
+        </div>
         </div>
 
-        </div>
+        <div class="col-md-4 ">
+                categories
+            </div>
 
+    </div>
 @endsection
