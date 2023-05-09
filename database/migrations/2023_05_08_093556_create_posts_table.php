@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title_fr');
             $table->string('title_en');
-            $table->string('slag');
+            $table->string('slug');
             $table->text('body_fr');
             $table->text('body_en');
             $table->boolean('premium')->default(0);
