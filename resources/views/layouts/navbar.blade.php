@@ -14,8 +14,8 @@
     Account
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Login</a></li>
-            <li><a class="dropdown-item" href="#">register</a></li>
+            <li><a class="dropdown-item" href="{{route('login')}}">Login</a></li>
+            <li><a class="dropdown-item" href={{route('register')}}>register</a></li>
             <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">Bilal</a></li>
               <li><a class="dropdown-item" href="#">Logout</a></li>
