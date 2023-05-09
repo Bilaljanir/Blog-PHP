@@ -14,11 +14,16 @@
     Account
           </a>
           <ul class="dropdown-menu">
+              @guest
             <li><a class="dropdown-item" href="{{route('login')}}">Login</a></li>
             <li><a class="dropdown-item" href={{route('register')}}>register</a></li>
-            <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Bilal</a></li>
-              <li><a class="dropdown-item" href="#">Logout</a></li>
+              @endguest
+              @auth
+                      <li><a class="dropdown-item" href="#">{{auth()->user()->name}}</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="document.getElementById('formLogout').submit();">Logout</a></li>
+                      <form id="formLogout" action="{{route('logout')}}" method="POST">
+                  @csrf
+                  @endauth
           </ul>
         </li>
       </ul>
