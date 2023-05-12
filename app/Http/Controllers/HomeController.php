@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
-use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -20,11 +19,11 @@ class HomeController extends Controller
         ]);
     }
 
-    public function postsByCategory(Category $category)
+    public function postsByCategory(Category $category): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $posts = $category->posts()->latest()->paginate(9);
-        $categories = Category::withCount('posts')->orderBy('name_en')->get();
-
-        return view('home', compact('posts', 'categories', 'category'));
+        return view('home')->with([
+            'posts' => $category->posts()->paginate(10),
+            'category' => $category,
+        ]);
     }
 }

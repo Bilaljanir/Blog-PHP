@@ -20,5 +20,5 @@ use App\Http\Controllers\PostController;
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('category/{category}/posts', [HomeController::class, 'postsByCategory'])->name('category.posts');
+Route::get('/{category}/posts', [HomeController::class, 'postsByCategory'])->name('category.posts');
 Route::resource('posts', PostController::class);
