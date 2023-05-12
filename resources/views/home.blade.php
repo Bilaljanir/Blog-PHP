@@ -15,30 +15,28 @@
         <div class="col-md-8">
             <div class="card p-4 ">
                 <div class="row">
-    @isset($postsPremium)
-    @foreach($postsPremium as $post)
-    <div class="col-md-4 mb-2">
-        <div class="card h-100">
-            <img src="{{$posts->photo}}"
-                 class="card-img-top"
-                 alt="{{$post->title_en}}">
-            <div class="card-body">
-                <div class="card-title">
-                    {{$post_title_en}}
-
+                    @isset($postsPremium)
+                        @foreach($postsPremium as $post)
+                            <div class="col-md-4 mb-2">
+                                <div class="card h-100">
+                                    <img src="{{$post->photo}}"
+                                         class="card-img-top"
+                                         alt="{{$post->title_en}}">
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            {{$post->title_en}}
+                                        </div>
+                                        <p class="card-text">
+                                            {{  Str::limit($post->body_en, 100)}}
+                                        </p>
+                                        <a href="{{route('posts.show',$post)}}" class="btn btn-primary">View</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endisset
                 </div>
-                <p class="card-text">
-                    {{  Str::limit($post->body_en, 100)}}
-                </p>
-                <a href="{{route('posts.show',$post)}}" class="btn btn-primary"></a>
-            </div>
-        </div>
-    </div>
-
-    @endforeach
-    @endisset
-            </div>
-            <div class="row">
+                <div class="row">
                     @foreach($posts as $post)
                         <div class="col-md-4 mb-2">
                             <div class="card h-100">
@@ -48,26 +46,36 @@
                                 <div class="card-body">
                                     <div class="card-title">
                                         {{$post->title_en}}
-
                                     </div>
                                     <p class="card-text">
                                         {{  Str::limit($post->body_en, 100)}}
                                     </p>
-                                    <a href="{{route('posts.show',$post)}}" class="btn btn-primary">
-                                        View
-                                    </a>
+                                    <a href="{{route('posts.show',$post)}}" class="btn btn-primary">View</a>
                                 </div>
                             </div>
                         </div>
-
                     @endforeach
+                </div>
+                <div class="card-footer bg-white">
+                    <div class="d-flex justify-content-center">
+                        {{$posts->links()}}
+                    </div>
+                </div>
             </div>
         </div>
-        </div>
-
         <div class="col-md-4 ">
-                categories
-            </div>
-
+            <ul class="list-group">
+                @foreach($categories as $category)
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <a href="{{route('category.posts',$category->id)}}" class="btn btn link text-decoration-none text-dark">
+                            {{$category->name_en}}
+                        </a>
+                        <span class="badge bg-primary rounded-pill">
+                            {{$category->posts()->count()}}
+                        </span>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
     </div>
 @endsection
