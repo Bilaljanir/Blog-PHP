@@ -14,7 +14,7 @@ class tagSeeder extends Seeder
      */
     public function run(): void
     {
-        //use App\Models\Admin;
+        //use App\Models\admin;
         Tag::factory()->count(10)->create();
 
     }
