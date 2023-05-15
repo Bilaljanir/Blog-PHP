@@ -2,88 +2,91 @@
 
 @section('title')
     @if (isset($category))
-        {{ucfirst($category->name_en)}} posts
+        {{ucfirst($category->name_fr)}} articles
     @elseif(isset($tag))
-        {{ucfirst($tag->name)}} posts
+        {{ucfirst($tag->name)}} articles
     @else
-        Home
+        Accueil
     @endif
 @endsection
 
 @section('content')
     <div class="row my-5">
         <div class="col-md-8">
-            <div class="card p-4 ">
+            <div class="card p-4">
                 <div class="row">
                     @isset($postsPremium)
-                        @foreach($postsPremium as $post)
+                        @foreach ($postsPremium as $post)
                             <div class="col-md-4 mb-2">
                                 <div class="card h-100">
-                                    <img src="{{$posts->photo}}"
+                                    <img src="{{asset($post->photo)}}"
                                          class="card-img-top"
-                                         alt="{{$post->title_en}}">
+                                         alt="{{$post->title_fr}}">
                                     <div class="card-body">
                                         <div class="card-title fw-bold">
-                                            {{$post_title_en}}
-
+                                            @if(session()->get('lang') === 'fr')
+                                                {{$post->title_fr}}
+                                            @else
+                                                {{$post->title_en}}
+                                            @endif
                                         </div>
                                         <p class="card-text">
-                                            {{  Str::limit($post->body_en, 100)}}
+                                            @if(session()->get('lang') === 'fr')
+                                                {{ Str::limit($post->body_fr, 100) }}
+                                            @else
+                                                {{ Str::limit($post->body_en, 100) }}
+                                            @endif
                                         </p>
-                                        <a href="{{route('posts.show',$post)}}" class="btn btn-primary"></a>
+                                        <a href="{{route('posts.show', $post)}}" class="btn btn-primary">
+                                            <i class="fas fa-eye"></i>
+                                            @if(session()->get('lang') === 'fr')
+                                                Voir
+                                            @else
+                                                View
+                                            @endif
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-
                         @endforeach
                     @endisset
-                    @foreach($posts as $post)
+                    @foreach ($posts as $post)
                         <div class="col-md-4 mb-2">
                             <div class="card h-100">
-                                <img src="{{$post->photo}}"
+                                <img src="{{asset($post->photo)}}"
                                      class="card-img-top"
-                                     alt="{{$post->title_en}}">
+                                     alt="{{$post->title_fr}}">
                                 <div class="card-body">
                                     <div class="card-title fw-bold">
-                                        {{$post->title_en}}
-
+                                        @if(session()->get('lang') === 'fr')
+                                            {{$post->title_fr}}
+                                        @else
+                                            {{$post->title_en}}
+                                        @endif
                                     </div>
                                     <p class="card-text">
-                                        {{  Str::limit($post->body_en, 100)}}
+                                        @if(session()->get('lang') === 'fr')
+                                            {{ Str::limit($post->body_fr, 100) }}
+                                        @else
+                                            {{ Str::limit($post->body_en, 100) }}
+                                        @endif
                                     </p>
-                                    <a href="{{route('posts.show',$post)}}" class="btn btn-primary">
-                                        View
+                                    <a href="{{route('posts.show', $post)}}" class="btn btn-primary">
+                                        <i class="fas fa-eye"></i>
+                                        @if(session()->get('lang') === 'fr')
+                                            Voir
+                                        @else
+                                            View
+                                        @endif
                                     </a>
                                 </div>
                             </div>
                         </div>
-
                     @endforeach
-                </div>
-                <div class="card-footer bg-white">
-                    <div class="d-flex justify-content-center">
-                        {{$posts->links()}}
-                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="col-md-4 ">
-            <ul class="list-group">
-                @foreach($categories as $category)
-                    <li class="list-group-item d-flex justify-content-between align-items-start">
-                        <a href="{{route('category.posts', $category)}}"
-                           class="btn btn link text-decoration-none text-dark">
-                            {{$category->name_en}}
-                        </a>
-                        <span class="badge bg-primary rounded-pill">
-                            {{$category->posts()->count()}}
-                            </span>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
+       @include('layouts.sidebar')
 
     </div>
-
 @endsection

@@ -7,11 +7,11 @@
 @section('content')
     <div class="row my-5">
         <div class="col-md-8">
-            <div class="card p-4 ">
+            <div class="card p-4">
                 <div class="row">
                     <div class="col-md-12 mb-2">
                         <div class="card h-100">
-                            <img src="{{$post->photo}}"
+                            <img src="{{asset($post->photo)}}"
                                  class="card-img-top"
                                  alt="{{$post->title_en}}">
                             <div class="card-body">
@@ -26,30 +26,59 @@
                                     </span>
                                     <span class="badge bg-primary">
                                         <i class="fas fa-tag me-1"></i>
+                                        @if(session()->get('lang') === 'fr')
+                                            {{$post->category->name_fr}}
+                                        @else
                                             {{$post->category->name_en}}
+                                        @endif
                                     </span>
                                 </div>
                                 <div class="card-title fw-bold">
-                                    {{$post->title_en}}
-
+                                    @if(session()->get('lang') === 'fr')
+                                        {{$post->title_fr}}
+                                    @else
+                                        {{$post->title_en}}
+                                    @endif
                                 </div>
                                 <p class="card-text">
-                                    {{ $post->body_en }}
+                                    @if(session()->get('lang') === 'fr')
+                                        {{$post->body_fr}}
+                                    @else
+                                        {{$post->body_en}}
+                                    @endif
                                 </p>
                                 <div class="row my-2">
                                     <div class="col-md-6">
                                         @isset($previous)
                                             <a href="{{route('posts.show', $previous)}}" class="btn btn-link">
-                                                <div>Previous</div>
-                                                {{$previous->title_en}}
+                                                @if(session()->get('lang') === 'fr')
+                                                    <div>
+                                                        Precedent
+                                                    </div>
+                                                    {{$previous->title_fr}}
+                                                @else
+                                                    <div>
+                                                        Previous
+                                                    </div>
+                                                    {{$post->title_en}}
+                                                @endif
                                             </a>
                                         @endisset
                                     </div>
                                     <div class="col-md-6">
                                         @isset($next)
                                             <a href="{{route('posts.show', $next)}}" class="btn btn-link">
-                                                <div>Next</div>
-                                                {{$next->title_en}}
+                                                @if(session()->get('lang') === 'fr')
+                                                    <div>
+                                                        Suivant
+                                                    </div>
+                                                    {{$post->title_fr}}
+                                                @else
+                                                    <div>
+                                                        Next
+                                                    </div>
+                                                    {{$post->title_en}}
+                                                @endif
                                             </a>
                                         @endisset
                                     </div>
@@ -61,21 +90,6 @@
 
             </div>
         </div>
-
-        <div class="col-md-4 ">
-            <ul class="list-group">
-                @foreach($categories as $category)
-                    <li class="list-group-item d-flex justify-content-between align-items-start">
-                        <a href="{{route('category.posts', $category)}}"
-                           class="btn btn link text-decoration-none text-dark">
-                            {{$category->name_en}}
-                        </a>
-                        <span class="badge bg-primary rounded-pill">
-                            {{$category->posts()->count()}}
-                            </span>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
+    @include('layouts.sidebar')
 
 @endsection

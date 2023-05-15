@@ -26,4 +26,11 @@ class HomeController extends Controller
             'category' => $category,
         ]);
     }
+
+    public function changeLang($lang): \Illuminate\Http\RedirectResponse
+    {
+        session()->forget('lang');
+        session()->put('lang', $lang);
+        return redirect()->back();
+    }
 }
