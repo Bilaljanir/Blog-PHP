@@ -13,7 +13,10 @@ class PostController extends Controller
 {
     public function index()
     {
-        //
+        $posts = Post::latest()->paginate(10);
+        return view('admin.posts.index')->with([
+            'posts' => $posts
+        ]);
     }
 
     public function create()
@@ -29,8 +32,12 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
+        $next = Post::where('id', '>', $post->id )->orderBy('id')->first();
+        $previous = Post::where('id', '<', $post->id )->orderBy('id', 'desc')->first();
         return view('post.show')->with([
             'post' => $post,
+            'next'=> $next,
+            'previous' => $previous
         ]);
     }
 
