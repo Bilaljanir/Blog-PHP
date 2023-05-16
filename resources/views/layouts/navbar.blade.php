@@ -68,8 +68,6 @@
                     </ul>
                 </li>
             </ul>
-            <search-component></search-component>
         </div>
     </div>
 </nav>
-<search-canvas :placeholder=" @if(session()->get('lang') === 'fr')  'Recherche' @else 'Search' @endif"></search-canvas>

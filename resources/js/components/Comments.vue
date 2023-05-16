@@ -20,6 +20,19 @@
 </template>
 
 <script setup>
+import { useCommentsStore } from '@/stores/useCommentsStore';
+import {onMounted} from "vue";
+
+const store = useCommentsStore();
+
+const props = defineProps({
+    post_id: {
+        type: Number,
+        required: true
+    }
+});
+
+onMounted(() => store.fethComments(props.post_id));
 
 </script>
 

@@ -86,9 +86,13 @@
                                 <hr>
                                 <comments-count></comments-count>
                                 <hr>
-                                <comments-component></comments-component>
+                                <comments-component :post_id="{{$post->id}}"></comments-component>
                                 <hr>
-                                <add-comment></add-comment>
+                                @auth
+                                     <add-comment
+                                    :post_id="{{$post->id}}"
+                                    :user_id="{{auth()->user()->id}}"></add-comment>
+                                     @endcanany
                             </div>
                         </div>
                     </div>

@@ -22,5 +22,4 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/{category}/posts', [HomeController::class, 'postsByCategory'])->name('category.posts');
 Route::resource('posts', PostController::class);
-Route::get('change/lang/{lang}', [HomeController::class, 'changeLang'])
-    ->name('change.lang');
+Route::get('change/lang/{lang}', [HomeController::class, 'changeLang'])->name('change.lang');
