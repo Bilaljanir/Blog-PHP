@@ -1,18 +1,18 @@
 <template>
 <div class="d-flex flex-column">
-    <div class="flex">
+    <div class="flex" v-for="comment in store.getComments" :key="comment.id">
         <div class="flex-shrink-0">
 
             <span class="fw-bold">
-                Bilal Janir
+                {{comment.user.name}}
             </span>
         </div>
         <div class="flex-lg-grow-1 ms-"></div>
         <span class="text-muted">
-            <i>5 hours ago</i>
+            <i>{{comment.created_at}}</i>
         </span>
         <p>
-        Hello all
+            {{comment.body}}
         </p>
     </div>
 

@@ -18,4 +18,9 @@ class Comment extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function getCreatedAtAttribute($value): string
+    {
+        return Carbon::parse($value)->diffForHumans();
+    }
 }
