@@ -85,11 +85,12 @@
                                 </div>
                             </div>
                         </div>
+                        <app-component></app-component>
                     </div>
                 </div>
-
             </div>
         </div>
+
     @include('layouts.sidebar')
 
 @endsection
