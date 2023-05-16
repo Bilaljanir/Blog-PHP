@@ -83,9 +83,14 @@
                                         @endisset
                                     </div>
                                 </div>
+                                <hr>
+                                <comments-count></comments-count>
+                                <hr>
+                                <comments-component></comments-component>
+                                <hr>
+                                <add-comment></add-comment>
                             </div>
                         </div>
-                        <app-component></app-component>
                     </div>
                 </div>
             </div>
