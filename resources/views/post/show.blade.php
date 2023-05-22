@@ -89,10 +89,24 @@
                                 <comments-component :post_id="{{$post->id}}"></comments-component>
                                 <hr>
                                 @auth
-                                     <add-comment
-                                    :post_id="{{$post->id}}"
-                                    :user_id="{{auth()->user()->id}}"></add-comment>
-                                     @endcanany
+                                    @if (auth()->user()->hasVerifiedEmail())
+                                        <add-comment
+                                            :post_id="{{$post->id}}"
+                                            :user_id="{{auth()->user()->id}}"></add-comment>
+                                    @else
+                                        @if (session('status') === 'verification-link-sent')
+                                            <div class="alert alert-success" role="alert">
+                                                {{ __('A fresh verification link has been sent to your email address.') }}
+                                            </div>
+                                        @endif
+                                        {{ __('Before proceeding, please check your email for a verification link.') }}
+                                        {{ __('If you did not receive the email') }},
+                                        <form class="d-inline" method="POST" action="{{ route('verification.send') }}">
+                                            @csrf
+                                            <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
+                                        </form>
+                                    @endif
+                                @endauth
                                 @guest
                                     <div class="alert alert-info">
                                         <a href="{{route('login')}}" class="btn btn-link text-decoration-none text-dark">
