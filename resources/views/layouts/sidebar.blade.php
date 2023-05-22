@@ -14,12 +14,12 @@
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <a href="{{url('/')}}" class="btn btn-link text-decoration-none text-dark">
                         @if(session()->get('lang') === 'fr')
-                            Toutes les Post
+                            Toutes les Posts
                             <span class="badge bg-primary rounded-pill">
                                 {{\App\Models\Post::count()}}
                             </span>
                         @else
-                            All Post
+                            All Pots
                             <span class="badge bg-primary rounded-pill">
                                 {{\App\Models\Post::count()}}
                             </span>

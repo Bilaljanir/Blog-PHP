@@ -93,6 +93,13 @@
                                     :post_id="{{$post->id}}"
                                     :user_id="{{auth()->user()->id}}"></add-comment>
                                      @endcanany
+                                @guest
+                                    <div class="alert alert-info">
+                                        <a href="{{route('login')}}" class="btn btn-link text-decoration-none text-dark">
+                                            Login to add your comment
+                                        </a>
+                                    </div>
+                                @endguest
                             </div>
                         </div>
                     </div>
