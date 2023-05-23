@@ -1,7 +1,7 @@
 @extends('layouts.admin.main')
 
 @section('title')
-    Create
+    Update
 @endsection
 
 @section('content')
@@ -10,13 +10,14 @@
             <div class="card">
                 <div class="card-title text-center">
                     <h3 class="mt-3">
-                        Create new post
+                        Update post
                     </h3>
                 </div>
                 <hr>
                 <div class="card-body p-3">
-                    <form action="{{route('posts.store')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('posts.update',$post)}}" method="post" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
@@ -27,7 +28,7 @@
                                         <input type="text" name="title_en"
                                                placeholder="Title EN"
                                                class="form-control @error('title_en') is-invalid @enderror"
-                                               value="{{old('title_en')}}">
+                                               value="{{$post->title_en, old('title_en')}}">
                                         @error('title_en')
                                         <span class="invalid-feedback">
                                                 <strong>{{$message}}</strong>
@@ -46,7 +47,7 @@
                                                name="title_fr"
                                                placeholder="Title FR"
                                                class="form-control @error('title_fr') is-invalid @enderror"
-                                               value="{{old('title_fr')}}">
+                                               value="{{$post->title_fr, old('title_fr')}}">
                                         @error('title_fr')
                                         <span class="invalid-feedback">
                                                 <strong>{{$message}}</strong>
@@ -67,7 +68,9 @@
                                                 class="form-control @error('category_id') is-invalid @enderror">
                                             <option selected disabled>Choose a category</option>
                                             @foreach ($categories as $category)
-                                                <option value="{{$category->id}}">{{$category->name_en}}</option>
+                                                <option
+                                                    {{$post->category_id === $category->id ? 'selected' : ''}}
+                                                    value="{{$category->id}}">{{$category->name_en}}</option>
                                             @endforeach
                                         </select>
                                         @error('category_id')
@@ -88,7 +91,7 @@
                                             name="body_en"
                                             placeholder="Body EN"
                                             class="form-control @error('body_en') is-invalid @enderror"
-                                        >{{old('body_en')}}</textarea>
+                                        >{{$post->body_en}}</textarea>
                                         @error('body_en')
                                         <span class="invalid-feedback">
                                                 <strong>{{$message}}</strong>
@@ -109,7 +112,7 @@
                                             name="body_fr"
                                             placeholder="Body FR"
                                             class="form-control @error('body_fr') is-invalid @enderror"
-                                        >{{old('body_fr')}}</textarea>
+                                        >{{$post->body_fr}}</textarea>
                                         @error('body_fr')
                                         <span class="invalid-feedback">
                                                 <strong>{{$message}}</strong>
@@ -119,6 +122,9 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
+                                <div class="my-3">
+                                    <img src="{{asset($post->photo)}}" class="rounded" height="200" width="200" alt="{{$post->title}}">
+                                </div>
                                 <div class="form-group row">
                                     <label for="photo" class="col-sm-3 col-form-label">
                                         Image*
@@ -144,7 +150,9 @@
                                         Tags:
                                     </label>
                                     @foreach($tags as $tag)
-                                        <input type="checkbox" class="form-check-input mx-2" name="tags[]" id="tags"
+                                        <input type="checkbox"
+                                               {{$post->tags->contains($tag) ? 'checked' : ''}}
+                                               class="form-check-input mx-2" name="tags[]" id="tags"
                                                value="{{$tag->id}}">
                                         {{$tag->name}}
                                     @endforeach

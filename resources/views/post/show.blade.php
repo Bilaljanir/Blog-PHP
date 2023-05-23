@@ -16,22 +16,22 @@
                                  alt="{{$post->title_en}}">
                             <div class="card-body">
                                 <div class="d-flex justify-content-center my-3">
-                                    <span class="badge bg-danger">
-                                        <i class="fas fa-clock me-1"></i>
-                                        {{$post->created_at->diffForHumans()}}
-                                    </span>
+<span class="badge bg-danger">
+<i class="fas fa-clock me-1"></i>
+{{$post->created_at->diffForHumans()}}
+</span>
                                     <span class="badge bg-success mx-2">
-                                        <i class="fas fa-user me-1"></i>
-                                        {{$post->admin->name}}
-                                    </span>
+<i class="fas fa-user me-1"></i>
+{{$post->admin->name}}
+</span>
                                     <span class="badge bg-primary">
-                                        <i class="fas fa-tag me-1"></i>
-                                        @if(session()->get('lang') === 'fr')
+<i class="fas fa-tag me-1"></i>
+@if(session()->get('lang') === 'fr')
                                             {{$post->category->name_fr}}
                                         @else
                                             {{$post->category->name_en}}
                                         @endif
-                                    </span>
+</span>
                                 </div>
                                 <div class="card-title fw-bold">
                                     @if(session()->get('lang') === 'fr')
@@ -48,37 +48,27 @@
                                     @endif
                                 </p>
                                 <div class="row my-2">
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 text-start">
                                         @isset($previous)
                                             <a href="{{route('posts.show', $previous)}}" class="btn btn-link">
+                                                <i class="fas fa-chevron-left me-1"></i>
                                                 @if(session()->get('lang') === 'fr')
-                                                    <div>
-                                                        Precedent
-                                                    </div>
-                                                    {{$previous->title_fr}}
+                                                    Precedent
                                                 @else
-                                                    <div>
-                                                        Previous
-                                                    </div>
-                                                    {{$post->title_en}}
+                                                    Previous
                                                 @endif
                                             </a>
                                         @endisset
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 text-end">
                                         @isset($next)
                                             <a href="{{route('posts.show', $next)}}" class="btn btn-link">
                                                 @if(session()->get('lang') === 'fr')
-                                                    <div>
-                                                        Suivant
-                                                    </div>
-                                                    {{$post->title_fr}}
+                                                    Suivant
                                                 @else
-                                                    <div>
-                                                        Next
-                                                    </div>
-                                                    {{$post->title_en}}
+                                                    Next
                                                 @endif
+                                                <i class="fas fa-chevron-right ms-1"></i>
                                             </a>
                                         @endisset
                                     </div>
@@ -102,14 +92,17 @@
                                         {{ __('Before proceeding, please check your email for a verification link.') }}
                                         {{ __('If you did not receive the email') }},
                                         <form class="d-inline" method="POST" action="{{ route('verification.send') }}">
+
                                             @csrf
-                                            <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
+                                            <button type="submit"
+                                                    class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>
                                         </form>
                                     @endif
                                 @endauth
                                 @guest
                                     <div class="alert alert-info">
-                                        <a href="{{route('login')}}" class="btn btn-link text-decoration-none text-dark">
+                                        <a href="{{route('login')}}"
+                                           class="btn btn-link text-decoration-none text-dark">
                                             Login to add your comment
                                         </a>
                                     </div>
@@ -120,7 +113,7 @@
                 </div>
             </div>
         </div>
+        @include('layouts.sidebar')
 
-    @include('layouts.sidebar')
-
+    </div>
 @endsection

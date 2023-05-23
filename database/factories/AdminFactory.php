@@ -20,7 +20,7 @@ class AdminFactory extends Factory
     {
         return [
             'name' => 'admin',
-            'email' => fake()->unique()->safeEmail(),
+            'email' => 'admin@email.com',
             'email_verified_at' => now(),
             'password' => Hash::make('admin1234'),
             'remember_token' => Str::random(10),
