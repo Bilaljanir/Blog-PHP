@@ -25,7 +25,7 @@
                         @if(session()->get('lang') === 'fr')
                             Compte
                         @else
-                            Account
+    §                        Account
                         @endif
                     </a>
                     <ul class="dropdown-menu">

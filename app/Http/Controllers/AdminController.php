@@ -7,20 +7,13 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    //
-    public function index(){
-        $posts = Post::latest()->paginate(10);
-        return view('admin.index')->with([
-            'posts' => $posts
-        ]);
-    }
-    public function loginForm(){
+    public function loginForm(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Contracts\Foundation\Application
+    {
         if(auth()->guard('admin')->check()){
             return redirect()->route('admin.index');
         }
         return view('admin.auth.login');
     }
-
     public function login(Request $request){
         $this->validate($request, [
             'email' => 'required',
@@ -42,4 +35,5 @@ class AdminController extends Controller
         auth()->guard('admin')->logout();
         return redirect()->route('admin.loginForm');
     }
+
 }
