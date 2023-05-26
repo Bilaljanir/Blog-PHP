@@ -27,8 +27,10 @@ Route::resource('posts', PostController::class);
 Route::get('change/lang/{lang}', [HomeController::class, 'changeLang'])->name('change.lang');
 
 Route::prefix('admin')->group(function() {
-    Route::get('dashboard', [AdminController::class, 'index'])->name('admin.index');
-    Route::post('logout', [AdminController::class, 'logout'])->name('admin.logout');
+    Route::middleware('admin')->group(function(){
+        Route::get('dashboard',[AdminController::class, 'index'])->name('admin.index');
+        Route::post('logout',[AdminController::class, 'logout'])->name('admin.logout');
+    });
     Route::post('login', [AdminController::class, 'login'])->name('admin.login');
     Route::get('login', [AdminController::class, 'loginForm'])->name('admin.loginForm');
 });
