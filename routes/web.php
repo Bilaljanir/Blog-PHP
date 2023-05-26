@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -24,3 +25,10 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/{category}/posts', [HomeController::class, 'postsByCategory'])->name('category.posts');
 Route::resource('posts', PostController::class);
 Route::get('change/lang/{lang}', [HomeController::class, 'changeLang'])->name('change.lang');
+
+Route::prefix('admin')->group(function() {
+    Route::get('dashboard', [AdminController::class, 'index'])->name('admin.index');
+    Route::post('logout', [AdminController::class, 'logout'])->name('admin.logout');
+    Route::post('login', [AdminController::class, 'login'])->name('admin.login');
+    Route::get('login', [AdminController::class, 'loginForm'])->name('admin.loginForm');
+});
