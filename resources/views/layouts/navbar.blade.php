@@ -71,5 +71,15 @@
                 </li>
             </ul>
         </div>
+        @auth
+            <a href="{{ route('posts.create') }}" class="btn btn-primary">
+                <i class="fas fa-plus"></i>
+                @if(session()->get('lang') === 'fr')
+                    Ajouter un article
+                @else
+                    Add Post
+                @endif
+            </a>
+        @endauth
     </div>
 </nav>
