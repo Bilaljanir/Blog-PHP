@@ -26,6 +26,12 @@ Route::get('/{category}/posts', [HomeController::class, 'postsByCategory'])->nam
 Route::resource('posts', PostController::class);
 Route::get('change/lang/{lang}', [HomeController::class, 'changeLang'])->name('change.lang');
 
+Route::resource('posts', PostController::class);
+Route::get('premium/{post}', [PostController::class, 'togglePremium'])
+    ->name('toggle.premium');
+Route::get('published/{post}', [PostController::class, 'togglePublished'])
+    ->name('toggle.published');
+
 Route::prefix('admin')->group(function() {
     Route::middleware('admin')->group(function(){
         Route::get('dashboard',[AdminController::class, 'index'])->name('admin.index');
