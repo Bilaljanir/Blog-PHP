@@ -74,8 +74,8 @@
                                     </td>
                                     <td>
                                         <img src="{{asset($post->photo)}}"
-                                            width="40"
-                                            height="40"
+                                            width="50"
+                                            height="45"
                                             class="rounded-1"
                                             alt="{{$post->title_en}}">
                                     </td>

@@ -15,7 +15,7 @@
 
 <script setup>
 import { reactive } from 'vue';
-import { useCommentsStore } from '@/stores/useCommentsStore';
+import { useCommentsStore } from "@/stores/useCommentsStore";
 
 const data = reactive({
     body: ''
