@@ -31,7 +31,7 @@ import { onMounted, reactive } from 'vue';
 
 const store = useCommentsStore();
 const data = reactive({
-    commentToShow: 3
+    commentToShow: 4
 });
 
 const props = defineProps({

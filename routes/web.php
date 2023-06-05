@@ -40,3 +40,4 @@ Route::prefix('admin')->group(function() {
     Route::post('login', [AdminController::class, 'login'])->name('admin.login');
     Route::get('login', [AdminController::class, 'loginForm'])->name('admin.loginForm');
 });
+Route::get('/create')->name('admin.create');
