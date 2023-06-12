@@ -21,9 +21,12 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Title</th>
+                            <th>Title En</th>
+                            <th>Title Fr</th>
                             <th>Category</th>
                             <th>By</th>
+                            <th>Premium</th>
+                            <th>Published</th>
                             <th>Image</th>
                             <th>Added</th>
                             <th></th>
@@ -38,8 +41,39 @@
                                         {{$post->title_en}}
                                     </a>
                                 </td>
+                                <td>{{$post->title_fr}}</td>
                                 <td>{{$post->category->name_en}}</td>
                                 <td>{{$post->admin->name}}</td>
+                                <td>
+                                    @if ($post->premium)
+                                        <a href="{{route('toggle.premium', $post)}}">
+                                                <span class="badge bg-success">
+                                                    premium
+                                                </span>
+                                        </a>
+                                    @else
+                                        <a href="{{route('toggle.premium', $post)}}">
+                                                <span class="badge bg-info">
+                                                    simple
+                                                </span>
+                                        </a>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($post->published)
+                                        <a href="{{route('toggle.published', $post)}}">
+                                                <span class="badge bg-success">
+                                                    published
+                                                </span>
+                                        </a>
+                                    @else
+                                        <a href="{{route('toggle.published', $post)}}">
+                                                <span class="badge bg-info">
+                                                    draft
+                                                </span>
+                                        </a>
+                                    @endif
+                                </td>
                                 <td>
                                     <img src="{{asset($post->photo)}}"
                                          width="60"
@@ -76,13 +110,4 @@
             </div>
         </div>
     </div>
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <p>&copy; 2023 create by bilal janir  </p>
-                </div>
-            </div>
-        </div>
-    </footer>
 @endsection

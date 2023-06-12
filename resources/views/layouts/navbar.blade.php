@@ -37,6 +37,13 @@
                                         Login
                                     @endif
                                 </a></li>
+                            <li><a class="dropdown-item" href="{{ route('admin.login') }}"><i class="fas fa-sign-in"></i>
+                                    @if(session()->get('lang') === 'fr')
+                                        Connexion admin
+                                    @else
+                                        login admin
+                                    @endif
+                                </a></li>
                             <li><a class="dropdown-item" href="{{ route('register') }}"><i class="fas fa-user-plus"></i>
                                     @if(session()->get('lang') === 'fr')
                                         Inscription
