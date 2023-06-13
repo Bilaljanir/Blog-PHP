@@ -79,7 +79,7 @@ class PostController extends Controller
         //
         $next = Post::where('id', '>', $post->id )->orderBy('id')->first();
         $previous = Post::where('id', '<', $post->id )->orderBy('id', 'desc')->first();
-        return view('posts.show')->with([
+        return view('post.show')->with([
             'post' => $post,
             'next' => $next,
             'previous' => $previous
