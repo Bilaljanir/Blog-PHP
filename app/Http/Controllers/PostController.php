@@ -25,7 +25,7 @@ class PostController extends Controller
     {
         //
         $posts = Post::latest()->paginate(10);
-        return view('admin.posts.index')->with([
+        return view('admin.index')->with([
             'posts' => $posts
         ]);
     }

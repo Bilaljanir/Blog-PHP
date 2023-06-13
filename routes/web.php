@@ -28,7 +28,6 @@ Route::get('change/lang/{lang}', [HomeController::class, 'changeLang'])->name('c
 
 Route::resource('posts', PostController::class);
 
-
 Route::prefix('admin')->group(function() {
     Route::middleware('admin')->group(function(){
         Route::get('dashboard',[AdminController::class, 'index'])->name('admin.index');
