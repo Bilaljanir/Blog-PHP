@@ -1,5 +1,5 @@
-<div class="col-md-4">
-    <div class="card">
+<div class="col-md-3">
+    <div class="card my-lg-3">
         <div class="card-header bg-primary text-white">
             <h4 class="mb-0">
                 @if(session()->get('lang') === 'fr')
@@ -25,7 +25,7 @@
                 </li>
                 @foreach ($categories as $category)
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <a href="{{ route('category.posts', $category) }}" class="btn btn-link text-decoration-none text-dark">
+                        <a href="{{ route('category.posts', $category) }}" class="btn btn-link text-decoration-none text-dark category-link">
                             @if(session()->get('lang') === 'fr')
                                 {{ $category->name_fr }}
                             @else

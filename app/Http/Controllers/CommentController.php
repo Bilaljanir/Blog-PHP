@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -21,17 +22,6 @@ class CommentController extends Controller
             'body' => $request->body,
         ]);
         return response()->json($comment->load('user'));
-    }
-    public function destroy($id)
-    {
-        $comment = Comment::findOrFail($id);
-
-        if ($comment->user_id === auth()->user()->id) {
-            $comment->delete();
-            return response()->json(['message' => 'Comment deleted successfully']);
-        }
-
-        return response()->json(['message' => 'You are not authorized to delete this comment'], 403);
     }
 
 }

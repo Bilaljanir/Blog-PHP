@@ -39,9 +39,9 @@
                                 </a></li>
                             <li><a class="dropdown-item" href="{{ route('admin.login') }}"><i class="fas fa-sign-in"></i>
                                     @if(session()->get('lang') === 'fr')
-                                        Connexion admin
+                                    Admin
                                     @else
-                                        login admin
+                                    Admin
                                     @endif
                                 </a></li>
                             <li><a class="dropdown-item" href="{{ route('register') }}"><i class="fas fa-user-plus"></i>
@@ -55,9 +55,9 @@
                         @auth
                                 <li><a class="dropdown-item" href="{{ route('admin.login') }}"><i class="fas fa-sign-in"></i>
                                         @if(session()->get('lang') === 'fr')
-                                            Connexion admin
+                                     Admin
                                         @else
-                                            login admin
+                                            Admin
                                         @endif
                                     </a></li>
                             <li><a class="dropdown-item" href="#" onclick="document.getElementById('formLogout').submit();"><i class="fas fa-sign-out"></i>

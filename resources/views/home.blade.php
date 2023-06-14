@@ -12,14 +12,14 @@
 
 @section('content')
     <div class="row my-5">
-        <div class="col-md-8">
-            <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col-md-9">
+            <div class="row row-cols-3">
                 @isset($postsPremium)
                     @foreach ($postsPremium as $post)
                         <div class="col">
                             <div class="card h-100">
                                 <img src="{{ asset($post->photo) }}"
-                                     class="card-img-top"
+                                     class="card-img-top img-fluid"
                                      alt="{{ $post->title_fr }}">
                                 <div class="card-body">
                                     <h5 class="card-title fw-bold">
@@ -51,10 +51,10 @@
                 @endisset
 
                 @foreach ($posts as $post)
-                    <div class="col">
+                    <div class="col my-lg-3">
                         <div class="card h-100">
                             <img src="{{ asset($post->photo) }}"
-                                 class="card-img-top"
+                                 class="card-img-top img-fluid"
                                  alt="{{ $post->title_fr }}">
                             <div class="card-body">
                                 <h5 class="card-title fw-bold">
@@ -84,8 +84,10 @@
                     </div>
                 @endforeach
             </div>
+
         </div>
         @include('layouts.sidebar')
+
     </div>
     <footer class="bg-dark text-light text-center py-4">
         <div class="container">
@@ -107,5 +109,4 @@
             </div>
         </div>
     </footer>
-    </div>
 @endsection

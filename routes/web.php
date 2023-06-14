@@ -37,4 +37,3 @@ Route::prefix('admin')->group(function() {
     Route::get('login', [AdminController::class, 'loginForm'])->name('admin.loginForm');
 });
 Route::get('/create')->name('admin.create');
-Route::delete('/comments/{id}', [CommentController::class, 'destroy']);

@@ -121,7 +121,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <div class="my-3">
                                     <img src="{{asset($post->photo)}}" class="rounded" height="200" width="200" alt="{{$post->title}}">
                                 </div>
@@ -129,7 +129,7 @@
                                     <label for="photo" class="col-sm-3 col-form-label">
                                         Image*
                                     </label>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-">
                                         <input type="file"
                                                name="photo"
                                                placeholder="Body FR"
@@ -140,22 +140,6 @@
                                             </span>
                                         @enderror
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row my-3">
-                            <div class="col-md-12">
-                                <div class="form-check d-flex justify-content-center">
-                                    <label for="tags" class="form-check-label">
-                                        Tags:
-                                    </label>
-                                    @foreach($tags as $tag)
-                                        <input type="checkbox"
-                                               {{$post->tags->contains($tag) ? 'checked' : ''}}
-                                               class="form-check-input mx-2" name="tags[]" id="tags"
-                                               value="{{$tag->id}}">
-                                        {{$tag->name}}
-                                    @endforeach
                                 </div>
                             </div>
                         </div>

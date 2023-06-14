@@ -10,7 +10,7 @@
             <div class="card">
                 <div class="card-title text-center">
                     <h3 class="mt-3">
-                        Create new post
+                        <i class="fas fa-plus-circle"></i> Create new post
                     </h3>
                 </div>
                 <hr>
