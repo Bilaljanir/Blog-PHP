@@ -9,71 +9,73 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <div>
-                        <h4 class="card-title">
-                            <a href="{{route('posts.create')}}" class="btn btn-sm btn-primary">
-                                <i class="fas fa-plus"></i>
-                            </a>
-                        </h4>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4 class="card-title">Posts</h4>
+                        <a href="{{ route('posts.create') }}" class="btn btn-sm btn-primary">
+                            <i class="fas fa-plus"></i> Add Post
+                        </a>
                     </div>
                     <hr>
-                    <table class="table table-hovered">
-                        <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Title En</th>
-                            <th>Title Fr</th>
-                            <th>Category</th>
-                            <th>By</th>
-                            <th>Image</th>
-                            <th>Added</th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach ($posts as $key => $post)
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
                             <tr>
-                                <td>{{$key+=1}}</td>
-                                <td>
-                                    <a href="{{route('posts.show',$post)}}" target="_blank">
-                                        {{$post->title_en}}
-                                    </a>
-                                </td>
-                                <td>{{$post->title_fr}}</td>
-                                <td>{{$post->category->name_en}}</td>
-                                <td>{{$post->admin->name}}</td>
-                                <td>
-                                    <img src="{{asset($post->photo)}}"
-                                         width="60"
-                                         height="60"
-                                         class="rounded"
-                                         alt="{{$post->title_en}}">
-                                </td>
-                                <td>
-                                    {{$post->created_at->diffForHumans()}}
-                                </td>
-                                <td class="d-flex">
-                                    <a href="{{route('posts.edit',$post)}}" class="btn btn-sm btn-warning">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                    <button onclick="
-                                                        if(confirm('are you sure ?'))
-                                                        document.getElementById({{$post->id}}).submit();
-                                                        " class="btn btn-sm btn-danger mx-2">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                    <form id="{{$post->id}}" action="{{route('posts.destroy',$post)}}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                    </form>
-                                </td>
+                                <th>ID</th>
+                                <th>Title (EN)</th>
+                                <th>Title (FR)</th>
+                                <th>Category</th>
+                                <th>Author</th>
+                                <th>Image</th>
+                                <th>Added</th>
+                                <th>Actions</th>
                             </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                            @foreach ($posts as $key => $post)
+                                <tr>
+                                    <td>{{ $key+1 }}</td>
+                                    <td>
+                                        <a href="{{ route('posts.show', $post) }}" target="_blank">
+                                            {{ $post->title_en }}
+                                        </a>
+                                    </td>
+                                    <td>{{ $post->title_fr }}</td>
+                                    <td>{{ $post->category->name_en }}</td>
+                                    <td>{{ $post->admin->name }}</td>
+                                    <td>
+                                        <img src="{{ asset($post->photo) }}"
+                                             width="60"
+                                             height="60"
+                                             class="rounded"
+                                             alt="{{ $post->title_en }}">
+                                    </td>
+                                    <td>{{ $post->created_at->diffForHumans() }}</td>
+                                    <td>
+                                        <div class="d-flex">
+                                            <a href="{{ route('posts.edit', $post) }}" class="btn btn-sm btn-warning me-2">
+                                                <i class="fas fa-edit"></i> Edit
+                                            </a>
+                                            <button onclick="
+                                                    if (confirm('Are you sure?')) {
+                                                        document.getElementById('delete-form-{{ $post->id }}').submit();
+                                                    }"
+                                                    class="btn btn-sm btn-danger">
+                                                <i class="fas fa-trash"></i> Delete
+                                            </button>
+                                            <form id="delete-form-{{ $post->id }}" action="{{ route('posts.destroy', $post) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div class="d-flex justify-content-center">
-                    {{$posts->links()}}
+                    {{ $posts->links() }}
                 </div>
             </div>
         </div>
