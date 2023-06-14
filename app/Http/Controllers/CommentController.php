@@ -22,4 +22,16 @@ class CommentController extends Controller
         ]);
         return response()->json($comment->load('user'));
     }
+    public function destroy($id)
+    {
+        $comment = Comment::findOrFail($id);
+
+        if ($comment->user_id === auth()->user()->id) {
+            $comment->delete();
+            return response()->json(['message' => 'Comment deleted successfully']);
+        }
+
+        return response()->json(['message' => 'You are not authorized to delete this comment'], 403);
+    }
+
 }

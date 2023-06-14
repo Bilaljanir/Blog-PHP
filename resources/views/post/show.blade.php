@@ -16,22 +16,22 @@
                                  alt="{{$post->title_en}}">
                             <div class="card-body">
                                 <div class="d-flex justify-content-center my-3">
-<span class="badge bg-danger">
-<i class="fas fa-clock me-1"></i>
-{{$post->created_at->diffForHumans()}}
-</span>
-                                    <span class="badge bg-success mx-2">
-<i class="fas fa-user me-1"></i>
-{{$post->admin->name}}
-</span>
-                                    <span class="badge bg-primary">
-<i class="fas fa-tag me-1"></i>
-@if(session()->get('lang') === 'fr')
+                        <span class="badge bg-danger">
+                        <i class="fas fa-clock me-1"></i>
+                        {{$post->created_at->diffForHumans()}}
+                        </span>
+                                                            <span class="badge bg-success mx-2">
+                        <i class="fas fa-user me-1"></i>
+                        {{$post->admin->name}}
+                        </span>
+                                                            <span class="badge bg-primary">
+                        <i class="fas fa-tag me-1"></i>
+                        @if(session()->get('lang') === 'fr')
                                             {{$post->category->name_fr}}
                                         @else
                                             {{$post->category->name_en}}
                                         @endif
-</span>
+                                            </span>
                                 </div>
                                 <div class="card-title fw-bold">
                                     @if(session()->get('lang') === 'fr')

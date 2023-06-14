@@ -13,6 +13,5 @@ app.component('comments-component', Comments);
 app.component('add-comment', AddComment);
 app.component('comments-count', CommentsCount);
 
-
 app.use(pinia);
 app.mount("#app");

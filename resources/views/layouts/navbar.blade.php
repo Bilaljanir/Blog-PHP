@@ -53,7 +53,13 @@
                                 </a></li>
                         @endguest
                         @auth
-                            <li><a class="dropdown-item" href="#">{{ auth()->user()->name }}</a></li>
+                                <li><a class="dropdown-item" href="{{ route('admin.login') }}"><i class="fas fa-sign-in"></i>
+                                        @if(session()->get('lang') === 'fr')
+                                            Connexion admin
+                                        @else
+                                            login admin
+                                        @endif
+                                    </a></li>
                             <li><a class="dropdown-item" href="#" onclick="document.getElementById('formLogout').submit();"><i class="fas fa-sign-out"></i>
                                     @if(session()->get('lang') === 'fr')
                                         Déconnexion
@@ -76,6 +82,14 @@
                         <li><a class="dropdown-item" href="{{ route('change.lang', 'fr') }}">Fr</a></li>
                     </ul>
                 </li>
+                @auth()
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-user"></i>
+                            {{ auth()->user()->name }}
+                        </a>
+                    </li>
+                @endauth
             </ul>
         </div>
         @auth
