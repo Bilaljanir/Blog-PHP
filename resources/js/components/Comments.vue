@@ -11,6 +11,9 @@
                 <span class="text-muted ms-2">
           <i>{{ comment.created_at }}</i>
         </span>
+                <button @click="deleteComment(comment.id)" class="btn btn-sm btn-danger ms-auto">
+                    Supprimer
+                </button>
             </div>
             <div class="flex-lg-grow-1 ms-"></div>
             <p>{{ comment.body }}</p>
@@ -49,8 +52,15 @@ const loadMoreComments = () => {
     }
 };
 
-onMounted(() => store.fethComments(props.post_id));
+const deleteComment = async (commentId) => {
+    try {
+        await store.deleteComment(commentId);
+    } catch (error) {
+        console.log(error);
+    }
+};
 
+onMounted(() => store.fetchComments(props.post_id));
 </script>
 
 <style scoped>

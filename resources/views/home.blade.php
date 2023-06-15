@@ -86,8 +86,7 @@
             </div>
 
         </div>
-        @include('layouts.sidebar')
-
+            @include('layouts.sidebar')
     </div>
     <footer class="bg-dark text-light text-center py-4">
         <div class="container">

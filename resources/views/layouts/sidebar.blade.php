@@ -1,5 +1,5 @@
 <div class="col-md-3">
-    <div class="card my-lg-3">
+    <div class="card my-3">
         <div class="card-header bg-primary text-white">
             <h4 class="mb-0">
                 @if(session()->get('lang') === 'fr')

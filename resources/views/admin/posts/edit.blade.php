@@ -10,7 +10,7 @@
             <div class="card">
                 <div class="card-title text-center">
                     <h3 class="mt-3">
-                        Update post
+                        <i class="fas fa-edit"></i> Update post
                     </h3>
                 </div>
                 <hr>

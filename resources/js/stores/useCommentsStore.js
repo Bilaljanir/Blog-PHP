@@ -9,7 +9,7 @@ export const useCommentsStore = defineStore('comments', {
         getComments: (state) => state.comments
     },
     actions: {
-        async fethComments(post_id){
+        async fetchComments(post_id) {
             try {
                 const response = await axios.get(`/api/comments/${post_id}`);
                 this.comments = response.data;
@@ -17,17 +17,33 @@ export const useCommentsStore = defineStore('comments', {
                 console.log(error);
             }
         },
-        async storeComment(user_id, post_id, body){
+        async storeComment(user_id, post_id, body) {
             try {
-                const response = await axios.post('/api/add/comment',{
+                const response = await axios.post('/api/add/comment', {
                     user_id,
                     post_id,
                     body
-                })
-                this.comments.unshift(response.data);
+                });
+
+                // Ajoute le commentaire à la liste des commentaires existants
+                this.comments.push(response.data);
+
+                // Mettre à jour les commentaires dans la base de données
+                await axios.put(`/api/comments/${post_id}`, this.comments);
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        async deleteComment(commentId) {
+            try {
+                // Supprime le commentaire de la liste des commentaires
+                this.comments = this.comments.filter(comment => comment.id !== commentId);
+
+                // Mettre à jour les commentaires dans la base de données
+                await axios.put(`/api/comments/${post_id}`, this.comments);
             } catch (error) {
                 console.log(error);
             }
         }
     },
-})
+});

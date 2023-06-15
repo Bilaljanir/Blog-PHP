@@ -23,5 +23,17 @@ class CommentController extends Controller
         ]);
         return response()->json($comment->load('user'));
     }
+    public function destroy(Request $request, $id)
+    {
+        $comment = Comment::findOrFail($id);
+        // Vérifiez si l'utilisateur actuel est autorisé à supprimer le commentaire
+        if ($comment->user_id === $request->user_id) {
+            $comment->delete();
+            return response()->json(['message' => 'Commentaire supprimé avec succès']);
+        } else {
+            return response()->json(['message' => 'Vous n\'êtes pas autorisé à supprimer ce commentaire'], 403);
+        }
+    }
+
 
 }
