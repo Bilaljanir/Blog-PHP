@@ -15,7 +15,7 @@
                         @if(session()->get('lang') === 'fr')
                             Accueil
                         @else
-                            Home
+                          <href></href>  Home
                         @endif
                     </a>
                 </li>

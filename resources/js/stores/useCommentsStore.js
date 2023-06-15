@@ -31,7 +31,7 @@ export const useCommentsStore = defineStore('comments', {
         },
         async deleteComment(commentId) {
             try {
-                await axios.delete(`/api/comments/${commentId}`);
+                axios.delete('/api/comments/${commentId}').then(r => commentId);
                 this.comments = this.comments.filter(comment => comment.id !== commentId);
             } catch (error) {
                 console.log(error.response);
