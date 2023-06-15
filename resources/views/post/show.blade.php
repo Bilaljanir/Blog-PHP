@@ -76,10 +76,10 @@
                                 <hr>
                                 <comments-count></comments-count>
                                 <hr>
-                                <comments-component :post_id="{{$post->id}}"></comments-component>
+                                <comments-component :post_id="{{$post->id}}" :can_delete="true"></comments-component>
                                 <hr>
-                                @auth
-                                    @if (auth()->user()->hasVerifiedEmail())
+                            @auth
+                                @if (auth()->user()->hasVerifiedEmail())
                                         <add-comment
                                             :post_id="{{$post->id}}"
                                             :user_id="{{auth()->user()->id}}"></add-comment>
@@ -117,3 +117,8 @@
 
     </div>
 @endsection
+
+@section('scripts')
+    <script src="{{ asset('js/app.js') }}"></script>
+@endsection
+

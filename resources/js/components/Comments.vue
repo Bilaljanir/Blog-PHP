@@ -1,28 +1,22 @@
 <template>
     <div class="d-flex flex-column">
-        <div
-            class="flex"
-            v-for="comment in store.getComments.slice(0, data.commentToShow)"
-            :key="comment.id"
-        >
-            <div class="d-flex align-items-center">
-                <i class="fas fa-user me-1"></i>
-                <span class="fw-bold">{{ comment.user.name }}</span>
-                <span class="text-muted ms-2">
-          <i>{{ comment.created_at }}</i>
-        </span>
-                <button @click="deleteComment(comment.id)" class="btn btn-sm btn-danger ms-auto">
-                    Supprimer
-                </button>
+        <div v-for="comment in store.getComments.slice(0, data.commentToShow)" :key="comment.id" class="mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-user me-1"></i>
+                            <small class="me-2">{{ comment.user.name }}</small>
+                        </div>
+                        <button v-if="can_delete" @click="deleteComment(comment.id)" class="btn btn-sm btn-danger">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                    <p>{{ comment.body }}</p>
+                </div>
             </div>
-            <div class="flex-lg-grow-1 ms-"></div>
-            <p>{{ comment.body }}</p>
         </div>
-        <button
-            v-if="data.commentToShow < store.getComments.length"
-            @click="loadMoreComments"
-            class="btn btn-sm btn-link text-decoration-none text-dark"
-        >
+        <button v-if="data.commentToShow < store.getComments.length" @click="loadMoreComments" class="btn btn-sm btn-link text-decoration-none text-dark">
             Load more
         </button>
     </div>
@@ -41,6 +35,10 @@ const props = defineProps({
     post_id: {
         type: Number,
         required: true
+    },
+    can_delete: {
+        type: Boolean,
+        default: false
     }
 });
 
@@ -58,6 +56,16 @@ const deleteComment = async (commentId) => {
     } catch (error) {
         console.log(error);
     }
+    try {
+        await store.deleteComment(commentId);
+        // Suppression réussie, afficher une alerte
+        window.alert('Commentaire supprimé avec succès.');
+    } catch (error) {
+        console.log(error);
+        // Erreur lors de la suppression, afficher une alerte d'erreur
+        window.alert('Une erreur s\'est produite lors de la suppression du commentaire.');
+    }
+
 };
 
 onMounted(() => store.fetchComments(props.post_id));

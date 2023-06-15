@@ -10,7 +10,7 @@
             <div class="card">
                 <div class="card-title text-center">
                     <h3 class="mt-3">
-                        <i class="fas fa-plus-circle"></i> Create new post
+                        Create new post
                     </h3>
                 </div>
                 <hr>
@@ -101,19 +101,19 @@
                         <div class="row my-2">
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label for="body_fr" class="col-sm-3 col-form-label">
+                                    <label for="body_en" class="col-sm-3 col-form-label">
                                         Body FR*
                                     </label>
                                     <div class="col-sm-9">
-                            <textarea
-                                name="body_fr"
-                                placeholder="Body FR"
-                                class="form-control @error('body_fr') is-invalid @enderror"
-                            >{{old('body_fr')}}</textarea>
+                                        <textarea
+                                            name="body_fr"
+                                            placeholder="Body FR"
+                                            class="form-control @error('body_fr') is-invalid @enderror"
+                                        >{{old('body_fr')}}</textarea>
                                         @error('body_fr')
                                         <span class="invalid-feedback">
-                                <strong>{{$message}}</strong>
-                            </span>
+                                                <strong>{{$message}}</strong>
+                                            </span>
                                         @enderror
                                     </div>
                                 </div>
@@ -137,7 +137,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="row my-3">
                             <div class="col-md-12">
                                 <div class="form-check d-flex justify-content-center">

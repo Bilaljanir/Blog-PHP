@@ -24,26 +24,19 @@ export const useCommentsStore = defineStore('comments', {
                     post_id,
                     body
                 });
-
-                // Ajoute le commentaire à la liste des commentaires existants
-                this.comments.push(response.data);
-
-                // Mettre à jour les commentaires dans la base de données
-                await axios.put(`/api/comments/${post_id}`, this.comments);
+                this.comments.unshift(response.data);
             } catch (error) {
                 console.log(error);
             }
         },
         async deleteComment(commentId) {
             try {
-                // Supprime le commentaire de la liste des commentaires
+                await axios.delete(`/api/comments/${commentId}`);
                 this.comments = this.comments.filter(comment => comment.id !== commentId);
-
-                // Mettre à jour les commentaires dans la base de données
-                await axios.put(`/api/comments/${post_id}`, this.comments);
             } catch (error) {
-                console.log(error);
+                console.log(error.response);
             }
         }
-    },
+
+    }
 });

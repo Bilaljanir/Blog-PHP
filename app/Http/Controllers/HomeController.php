@@ -11,9 +11,11 @@ class HomeController extends Controller
     //
     public function index()
     {
+        $categories = Category::take(8)->get();
         $posts = Post::published()->simple()->latest()->paginate(20);
         $postsPremium = Post::published()->premium()->latest()->get();
         return view('home')->with([
+            'categories' => $categories,
             'posts' => $posts,
             'postsPremium' => $postsPremium
         ]);

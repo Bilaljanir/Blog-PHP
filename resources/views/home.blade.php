@@ -12,7 +12,7 @@
 
 @section('content')
     <div class="row my-5">
-        <div class="col-md-9">
+        <div class="col-md-8">
             <div class="row row-cols-3">
                 @isset($postsPremium)
                     @foreach ($postsPremium as $post)
