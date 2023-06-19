@@ -20,4 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::post('add/comment',[CommentController::class, 'store']);
 Route::get('comments/{post_id}', [CommentController::class, 'getPostComments']);
-Route::delete('/comments/{commentId}', [CommentController::class, 'deleteComment']);
+Route::delete('/comments/{commentId}', [CommentController::class, 'delete']);

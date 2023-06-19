@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -37,4 +38,5 @@ Route::prefix('admin')->group(function() {
     Route::get('login', [AdminController::class, 'loginForm'])->name('admin.loginForm');
 });
 Route::get('/create')->name('admin.create');
-Route::delete('/comments/{comment}', 'CommentController@destroy')->name('comments.destroy');
+Route::delete('/api/comments/{commentId}', 'CommentController@delete');
+Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
