@@ -24,7 +24,7 @@
                                 <th>Title (EN)</th>
                                 <th>Title (FR)</th>
                                 <th>Category</th>
-                                <th>Author</th>
+                                <th>By</th>
                                 <th>Image</th>
                                 <th>Added</th>
                                 <th>Actions</th>
@@ -44,7 +44,7 @@
                                     <td>{{ $post->admin->name }}</td>
                                     <td>
                                         <img src="{{ asset($post->photo) }}"
-                                             width="60"
+                                             width="80"
                                              height="60"
                                              class="rounded"
                                              alt="{{ $post->title_en }}">
@@ -52,15 +52,17 @@
                                     <td>{{ $post->created_at->diffForHumans() }}</td>
                                     <td>
                                         <div class="d-flex">
-                                            <a href="{{ route('posts.edit', $post) }}" class="btn btn-sm btn-warning me-2">
-                                                <i class="fas fa-edit"></i> Edit
+                                            <a href="{{ route('posts.edit', $post) }}" class="btn btn-outline-success m-2">
+                                                <i class="fas fa-edit">
+
+                                                </i> Edit
                                             </a>
                                             <button onclick="
                                                     if (confirm('Are you sure?')) {
                                                         document.getElementById('delete-form-{{ $post->id }}').submit();
                                                     }"
-                                                    class="btn btn-sm btn-danger">
-                                                <i class="fas fa-trash"></i> Delete
+                                                    class="btn btn-outline-danger m-2">
+                                                <i class="fas fa-trash d-block"></i> Delete
                                             </button>
                                             <form id="delete-form-{{ $post->id }}" action="{{ route('posts.destroy', $post) }}" method="post">
                                                 @csrf

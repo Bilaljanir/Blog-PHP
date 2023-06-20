@@ -30,7 +30,7 @@ class UpdatePostRequest extends FormRequest
             'body_en' => 'required|max:1000',
             'body_fr' => 'required|max:1000',
             'category_id' => 'required|numeric',
-            'photo' => 'image|mimes:png,jpg,jpeg|max:6050',
+            'photo' => 'image|mimes:png,jpg,jpeg|max:10048',
         ];
     }
 }

@@ -121,12 +121,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-5">
                                 <div class="my-3">
                                     <img src="{{asset($post->photo)}}" class="rounded" height="200" width="200" alt="{{$post->title}}">
                                 </div>
                                 <div class="form-group row">
-                                    <label for="photo" class="col-sm-3 col-form-label">
+                                    <label for="photo" class="col-sm- col-form-label">
                                         Image*
                                     </label>
                                     <div class="col-sm-">
@@ -144,7 +144,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12 d-flex justify-content-center">
+                            <div class="col-md-12 d-flex justify-content-end">
                                 <button type="submit" class="btn btn-primary">
                                     Submit
                                 </button>

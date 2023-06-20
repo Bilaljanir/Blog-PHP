@@ -96,7 +96,6 @@ class PostController extends Controller
     {
         //
         return view('admin.posts.edit')->with([
-            'tags' => Tag::all(),
             'post' => $post
         ]);
     }
