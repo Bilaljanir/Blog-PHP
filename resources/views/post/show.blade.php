@@ -73,6 +73,16 @@
                                         @endisset
                                     </div>
                                 </div>
+                                <div class="row my-3">
+                                    <div class="col-md-12">
+                                        Tags:
+                                        @foreach ($post->tags as $tag)
+                                            <a href="{{route('tag.posts',$tag)}}" class="btn btn-outline-secondary btn-sm mx-2">
+                                                {{$tag->name}}
+                                            </a>
+                                        @endforeach
+                                    </div>
+                                </div>
                                 <hr>
                                 <comments-count></comments-count>
                                 <hr>

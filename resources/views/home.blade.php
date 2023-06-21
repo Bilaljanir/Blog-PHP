@@ -81,11 +81,10 @@
                                 </a>
                             </div>
                             <div class="text-muted">
-                                <button @click="AddToFavorites(post)" type="button" class="btn btn-light float-end">
+                                <button @click="AddToFavorites((post))" type="button" class="btn btn-light float-end">
                                     <i class="fas fa-heart"></i>
                                 </button>
                             </div>
-
 
                         </div>
                     </div>
@@ -115,3 +114,4 @@
         </div>
     </footer>
 @endsection
+<style></style>

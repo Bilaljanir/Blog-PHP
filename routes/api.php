@@ -21,7 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::post('add/comment',[CommentController::class, 'store']);
 Route::get('comments/{post_id}', [CommentController::class, 'getPostComments']);
-Route::delete('comments/{id}', [CommentController::class, 'destroy']);
+Route::delete("comments/{comment}", "CommentsController@destroy")->name("api.comments.destroy");
 
 Route::post('/favorites', [FavoriteController::class, 'store'])->name('favorites.store');
 Route::delete('/favorites/{favorite}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');

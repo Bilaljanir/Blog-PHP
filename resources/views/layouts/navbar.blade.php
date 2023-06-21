@@ -100,6 +100,7 @@
                             <favorites-count :count="favoritesCount"></favorites-count>
                         </a>
                     </li>
+
                 @endauth
             </ul>
         </div>
