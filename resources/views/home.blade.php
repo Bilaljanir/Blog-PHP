@@ -54,9 +54,9 @@
                     <div class="col my-lg-3">
                         <div class="card h-100">
                             <img src="{{ asset($post->photo) }}"
-                                 class="card-img-top img-fluid"
+                                 class="card-img-top img-fluid w-100"
                                  alt="{{ $post->title_fr }}">
-                            <div class="card-body">
+                            <div class="card-body d-flex flex-column">
                                 <h5 class="card-title fw-bold">
                                     @if(session()->get('lang') === 'fr')
                                         {{ $post->title_fr }}
@@ -64,14 +64,14 @@
                                         {{ $post->title_en }}
                                     @endif
                                 </h5>
-                                <p class="card-text">
+                                <p class="card-text flex-grow-1">
                                     @if(session()->get('lang') === 'fr')
                                         {{ Str::limit($post->body_fr, 100) }}
                                     @else
                                         {{ Str::limit($post->body_en, 100) }}
                                     @endif
                                 </p>
-                                <a href="{{ route('posts.show', $post) }}" class="btn btn-primary ">
+                                <a href="{{ route('posts.show', $post) }}" class="btn btn-primary mt-2">
                                     <i class="fas fa-eye"></i>
                                     @if(session()->get('lang') === 'fr')
                                         Voir
@@ -80,13 +80,19 @@
                                     @endif
                                 </a>
                             </div>
+                            <div class="text-muted">
+                                <button @click="AddToFavorites(post)" type="button" class="btn btn-light float-end">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            </div>
+
+
                         </div>
                     </div>
                 @endforeach
             </div>
-
         </div>
-            @include('layouts.sidebar')
+        @include('layouts.sidebar')
     </div>
     <footer class="bg-dark text-light text-center py-4">
         <div class="container">

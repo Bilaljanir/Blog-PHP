@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use Illuminate\Http\Request;
+use App\Http\Controllers\FavoriteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +40,5 @@ Route::prefix('admin')->group(function() {
     Route::get('login', [AdminController::class, 'loginForm'])->name('admin.loginForm');
 });
 Route::get('/create')->name('admin.create');
-Route::delete('/api/comments/{commentId}', 'CommentController@delete');
 Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
-Route::delete('/comments/{comment}', 'CommentController@destroy')->name('comments.destroy');
+

@@ -78,6 +78,7 @@
                                 <hr>
                                 <comments-component :post_id="{{$post->id}}" :can_delete="true"></comments-component>
                                 <hr>
+
                             @auth
                                 @if (auth()->user()->hasVerifiedEmail())
                                         <add-comment

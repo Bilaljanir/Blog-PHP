@@ -25,7 +25,7 @@
                         @if(session()->get('lang') === 'fr')
                             Compte
                         @else
-    §                        Account
+                            Account
                         @endif
                     </a>
                     <ul class="dropdown-menu">
@@ -39,9 +39,9 @@
                                 </a></li>
                             <li><a class="dropdown-item" href="{{ route('admin.login') }}"><i class="fas fa-sign-in"></i>
                                     @if(session()->get('lang') === 'fr')
-                                    Admin
+                                        Admin
                                     @else
-                                    Admin
+                                        Admin
                                     @endif
                                 </a></li>
                             <li><a class="dropdown-item" href="{{ route('register') }}"><i class="fas fa-user-plus"></i>
@@ -53,13 +53,13 @@
                                 </a></li>
                         @endguest
                         @auth
-                                <li><a class="dropdown-item" href="{{ route('admin.login') }}"><i class="fas fa-sign-in"></i>
-                                        @if(session()->get('lang') === 'fr')
-                                     Admin
-                                        @else
-                                            Admin
-                                        @endif
-                                    </a></li>
+                            <li><a class="dropdown-item" href="{{ route('admin.login') }}"><i class="fas fa-sign-in"></i>
+                                    @if(session()->get('lang') === 'fr')
+                                        Admin
+                                    @else
+                                        Admin
+                                    @endif
+                                </a></li>
                             <li><a class="dropdown-item" href="#" onclick="document.getElementById('formLogout').submit();"><i class="fas fa-sign-out"></i>
                                     @if(session()->get('lang') === 'fr')
                                         Déconnexion
@@ -89,18 +89,19 @@
                             {{ auth()->user()->name }}
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-heart"></i>
+                            @if(session()->get('lang') === 'fr')
+                                Mes favoris
+                            @else
+                                My Favorites
+                            @endif
+                            <favorites-count :count="favoritesCount"></favorites-count>
+                        </a>
+                    </li>
                 @endauth
             </ul>
         </div>
-        @auth
-            <a href="{{ route('posts.create') }}" class="btn btn-primary">
-                <i class="fas fa-plus"></i>
-                @if(session()->get('lang') === 'fr')
-                    Ajouter un article
-                @else
-                    Add Post
-                @endif
-            </a>
-        @endauth
     </div>
 </nav>

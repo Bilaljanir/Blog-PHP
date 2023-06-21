@@ -29,14 +29,11 @@ export const useCommentsStore = defineStore('comments', {
                 console.log(error);
             }
         },
-        async deleteComment(commentId) {
-            try {
-                axios.delete('/api/comments/${commentId}').then(r => commentId);
-                this.comments = this.comments.filter(comment => comment.id !== commentId);
-            } catch (error) {
-                console.log(error.response);
+        removeComment(commentId) {
+            const index = this.comments.findIndex((comment) => comment.id === commentId);
+            if (index !== -1) {
+                this.comments.splice(index, 1);
             }
         }
-
     }
 });

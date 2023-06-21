@@ -36,8 +36,7 @@ const props = defineProps({
 })
 
 const addComment = async () => {
-    store.storeComment(props.user_id, props.post_id, data.body);
-    data.body = '';
+    store.storeComment(props.user_id, props.post_id, data.body);data.body = '';
 };
 
 const addCommentOnEnter = (event) => {

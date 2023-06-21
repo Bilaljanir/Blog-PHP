@@ -1,37 +1,23 @@
 <template>
-    <!-- Votre contenu de template ici -->
+    <button @click="deleteComment">Supprimer</button>
 </template>
 
-<script setup>
-import { useCommentsStore } from '@/stores/useCommentsStore';
-import { onMounted, defineProps } from 'vue';
-
-const store = useCommentsStore();
-
-const props = defineProps({
-    post_id: {
-        type: Number,
-        required: true
-    }
-});
-
-const deleteComment = async (commentId) => {
-    try {
-        await store.deleteComment(commentId);
-        // Suppression réussie, afficher une alerte
-        window.alert('Commentaire supprimé avec succès.');
-    } catch (error) {
-        console.log(error);
-        // Erreur lors de la suppression, afficher une alerte d'erreur
-        window.alert("Une erreur s'est produite lors de la suppression du commentaire.");
-    }
-};
-
-onMounted(() => {
-    store.fetchComments(props.post_id);
-});
+<script>
+export default {
+    methods: {
+        deleteComment() {
+            // Envoyer une requête AJAX vers la route de suppression de commentaire
+            // Utiliser l'ID du commentaire pour identifier le commentaire à supprimer
+            axios.delete(`/comments/${this.commentId}`)
+                .then(response => {
+                    // Le commentaire a été supprimé avec succès
+                    // Mettre à jour la liste des commentaires dans le composant parent si nécessaire
+                })
+                .catch(error => {
+                    // Gérer les erreurs lors de la suppression du commentaire
+                });
+        }
+    },
+    props: ['commentId']
+}
 </script>
-
-<style scoped>
-/* Vos styles CSS ici */
-</style>
