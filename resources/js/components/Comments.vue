@@ -25,6 +25,8 @@
 <script setup>
 import { useCommentsStore } from '@/stores/useCommentsStore';
 import { onMounted, reactive } from 'vue';
+import { defineProps } from 'vue';
+import { computed } from 'vue';
 
 const store = useCommentsStore();
 const data = reactive({

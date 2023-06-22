@@ -3,12 +3,18 @@ import { defineStore } from 'pinia';
 
 export const useCommentsStore = defineStore('comments', {
     state: () => ({
-        comments: []
+        comments: [],
+        currentUser: null
     }),
     getters: {
-        getComments: (state) => state.comments
+        getComments: (state) => state.comments,
+        getCurrentUser: (state) => state.currentUser
     },
     actions: {
+        setCurrentUser(user) {
+            this.currentUser = user;
+        },
+
         async fetchComments(post_id) {
             try {
                 const response = await axios.get(`/api/comments/${post_id}`);
@@ -29,11 +35,14 @@ export const useCommentsStore = defineStore('comments', {
                 console.log(error);
             }
         },
-        removeComment(commentId) {
-            const index = this.comments.findIndex((comment) => comment.id === commentId);
-            if (index !== -1) {
-                this.comments.splice(index, 1);
+        async deleteComment(commentId) {
+            try {
+                await axios.delete(`/api/comments/${commentId}`);
+                this.comments = this.comments.filter(comment => comment.id !== commentId);
+            } catch (error) {
+                console.log(error);
             }
         }
     }
+
 });

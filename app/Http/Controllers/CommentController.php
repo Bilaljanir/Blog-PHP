@@ -9,7 +9,6 @@ use Exception;
 
 class CommentController extends Controller
 {
-    //
     public function getPostComments($post_id)
     {
         $comments = Comment::with('user')->where('post_id', $post_id)->latest()->get();
@@ -26,16 +25,9 @@ class CommentController extends Controller
         return response()->json($comment->load('user'));
     }
 
-    /**
-     * Delete a comment resource
-     * @param Comment $comment
-     * @return \Illuminate\Http\JsonResponse
-     * @throws \Exception
-     */
     public function destroy(Comment $comment)
     {
         $comment->delete();
-
         return response()->json([], 200);
     }
 }

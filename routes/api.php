@@ -22,7 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::post('add/comment',[CommentController::class, 'store']);
 Route::get('comments/{post_id}', [CommentController::class, 'getPostComments']);
-Route::delete("comments/{comment}", "CommentsController@destroy")->name("api.comments.destroy");
+Route::delete("comments/{comment}", [CommentController::class,'destroy']);
 Route::post('search', [HomeController::class, 'searchByTerm']);
 
 

@@ -86,14 +86,11 @@
                                 <hr>
                                 <comments-count></comments-count>
                                 <hr>
-                                <comments-component :post_id="{{$post->id}}" :can_delete="true"></comments-component>
                                 <hr>
-
-                            @auth
-                                @if (auth()->user()->hasVerifiedEmail())
-                                        <add-comment
-                                            :post_id="{{$post->id}}"
-                                            :user_id="{{auth()->user()->id}}"></add-comment>
+                                <comments-component :post_id="{{$post->id}}" :can_delete="{{ auth()->check() ? 'true' : 'false' }}" :current_user="{{ auth()->user() }}"></comments-component>
+                                @auth
+                                    @if (auth()->user()->hasVerifiedEmail())
+                                        <add-comment :post_id="{{$post->id}}" :user_id="{{auth()->user()->id}}"></add-comment>
                                     @else
                                         @if (session('status') === 'verification-link-sent')
                                             <div class="alert alert-success" role="alert">
@@ -103,14 +100,14 @@
                                         {{ __('Before proceeding, please check your email for a verification link.') }}
                                         {{ __('If you did not receive the email') }},
                                         <form class="d-inline" method="POST" action="{{ route('verification.send') }}">
-
                                             @csrf
-                                            <button type="submit"
-                                                    class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>
+                                            <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>
                                         </form>
                                     @endif
                                 @endauth
-                                @guest
+
+
+                            @guest
                                     <div class="alert alert-info">
                                         <a href="{{route('login')}}"
                                            class="btn btn-link text-decoration-none text-dark">

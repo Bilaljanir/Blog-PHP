@@ -19,6 +19,5 @@ app.component('add-favorites',AddToFavorites);
 app.component('search-component', Search);
 app.component('search-canvas', SearchCanvas);
 
-
 app.use(pinia);
 app.mount("#app");
