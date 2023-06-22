@@ -34,7 +34,8 @@
     const data = reactive({
         posts: [],
         term: '',
-        message: ''
+        message: '',
+        errorMessageClass: ''
     });
 
     const props = defineProps({
@@ -46,15 +47,16 @@
 
     const getPostsByTerm = async () => {
         clearResults();
-        if(data.term.length >= 3){
+        if (data.term.length >= 3) {
             try {
-                const response = await axios.post('/api/search',{
+                const response = await axios.post('/api/search', {
                     term: data.term
                 });
-                if(response.data.length){
+                if (response.data.length) {
                     data.posts = response.data;
-                }else{
-                    data.message = 'Nothing found!'
+                } else {
+                    data.message = 'Nothing found!';
+                    data.errorMessageClass = 'error-message';
                 }
             } catch (error) {
                 console.log(error);
@@ -66,6 +68,7 @@
         data.posts = [];
         data.message = '';
     }
+
 </script>
 
 <style>

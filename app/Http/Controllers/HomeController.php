@@ -35,4 +35,13 @@ class HomeController extends Controller
         session()->put('lang', $lang);
         return redirect()->back();
     }
+
+public function searchByTerm(Request $request){
+    $posts = Post::orderBy('created_at','desc')
+        ->where('title_en', 'like', '%'.$request->term.'%')
+        ->orWhere('title_fr', 'like', '%'.$request->term.'%')
+        ->published()->get();
+    return response()->json($posts);
+
+}
 }

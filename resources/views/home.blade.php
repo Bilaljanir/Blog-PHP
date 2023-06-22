@@ -51,7 +51,7 @@
                 @endisset
 
                 @foreach ($posts as $post)
-                    <div class="col my-lg-3">
+                    <div class="col my-lg-1">
                         <div class="card h-100">
                             <img src="{{ asset($post->photo) }}"
                                  class="card-img-top img-fluid w-100"
