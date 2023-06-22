@@ -1,23 +1,29 @@
 <template>
-    <button @click="deleteComment">Supprimer</button>
+    <div>
+        <!-- Boucle pour afficher tous les commentaires -->
+        <div v-for="comment in comments" :key="comment.id">
+            <comment :comment-id="comment.id" @comment-deleted="handleCommentDeleted" />
+        </div>
+    </div>
 </template>
 
 <script>
+import Comment from './Comments.vue';
+
 export default {
-    methods: {
-        deleteComment() {
-            // Envoyer une requête AJAX vers la route de suppression de commentaire
-            // Utiliser l'ID du commentaire pour identifier le commentaire à supprimer
-            axios.delete(`/comments/${this.commentId}`)
-                .then(response => {
-                    // Le commentaire a été supprimé avec succès
-                    // Mettre à jour la liste des commentaires dans le composant parent si nécessaire
-                })
-                .catch(error => {
-                    // Gérer les erreurs lors de la suppression du commentaire
-                });
-        }
+    components: {
+        Comment
     },
-    props: ['commentId']
-}
+    data() {
+        return {
+            comments: [] // Votre liste de commentaires
+        };
+    },
+    methods: {
+        handleCommentDeleted() {
+            // Mettre à jour la liste des commentaires après la suppression d'un commentaire
+            // Vous pouvez charger à nouveau la liste des commentaires depuis le serveur ou effectuer une mise à jour locale si vous le souhaitez
+        }
+    }
+};
 </script>

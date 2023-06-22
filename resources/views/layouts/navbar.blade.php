@@ -4,7 +4,8 @@
             <i class="fas fa-blog"></i>
             Laravel Blog
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -20,7 +21,8 @@
                     </a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
                         <i class="fas fa-users"></i>
                         @if(session()->get('lang') === 'fr')
                             Compte
@@ -37,7 +39,8 @@
                                         Login
                                     @endif
                                 </a></li>
-                            <li><a class="dropdown-item" href="{{ route('admin.login') }}"><i class="fas fa-sign-in"></i>
+                            <li><a class="dropdown-item" href="{{ route('admin.login') }}"><i
+                                        class="fas fa-sign-in"></i>
                                     @if(session()->get('lang') === 'fr')
                                         Admin
                                     @else
@@ -53,14 +56,17 @@
                                 </a></li>
                         @endguest
                         @auth
-                            <li><a class="dropdown-item" href="{{ route('admin.login') }}"><i class="fas fa-sign-in"></i>
+                            <li><a class="dropdown-item" href="{{ route('admin.login') }}"><i
+                                        class="fas fa-sign-in"></i>
                                     @if(session()->get('lang') === 'fr')
                                         Admin
                                     @else
                                         Admin
                                     @endif
                                 </a></li>
-                            <li><a class="dropdown-item" href="#" onclick="document.getElementById('formLogout').submit();"><i class="fas fa-sign-out"></i>
+                            <li><a class="dropdown-item" href="#"
+                                   onclick="document.getElementById('formLogout').submit();"><i
+                                        class="fas fa-sign-out"></i>
                                     @if(session()->get('lang') === 'fr')
                                         Déconnexion
                                     @else
@@ -74,7 +80,8 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
                         <i class="fas fa-language"></i> Languages
                     </a>
                     <ul class="dropdown-menu">
@@ -89,20 +96,10 @@
                             {{ auth()->user()->name }}
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-heart"></i>
-                            @if(session()->get('lang') === 'fr')
-                                Mes favoris
-                            @else
-                                My Favorites
-                            @endif
-                            <favorites-count :count="favoritesCount"></favorites-count>
-                        </a>
-                    </li>
-
                 @endauth
             </ul>
         </div>
+        <search-component></search-component>
     </div>
 </nav>
+<search-canvas :placeholder=" @if(session()->get('lang') === 'fr')  'Recherche' @else 'Search' @endif"></search-canvas>

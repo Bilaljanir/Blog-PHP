@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('add/comment',[CommentController::class, 'store']);
 Route::get('comments/{post_id}', [CommentController::class, 'getPostComments']);
 Route::delete("comments/{comment}", "CommentsController@destroy")->name("api.comments.destroy");
+Route::post('search', [HomeController::class, 'searchByTerm']);
+
 
 Route::post('/favorites', [FavoriteController::class, 'store'])->name('favorites.store');
 Route::delete('/favorites/{favorite}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
