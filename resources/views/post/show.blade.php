@@ -24,7 +24,7 @@
                             <i class="fas fa-user me-1"></i>
                             {{$post->admin->name}}
                             </span>
-                                    <span class="badge bg-primary">
+                                                                <span class="badge bg-primary">
                             <i class="fas fa-tag me-1"></i>
                             @if(session()->get('lang') === 'fr')
                                             {{$post->category->name_fr}}
@@ -75,8 +75,9 @@
                                 </div>
                                 <div class="row my-3">
                                     <div class="col-md-12">
+                                        Tags:
                                         @foreach ($post->tags as $tag)
-                                            <a href="{{route('tag.posts',$tag)}}" class="btn btn-outline-secondary btn-sm mx-2">
+                                            <a href="{{route('tag.posts',$tag)}}" class="btn btn-outline-secondary btn-sm mx-2 di">
                                                 {{$tag->name}}
                                             </a>
                                         @endforeach
@@ -120,8 +121,23 @@
             </div>
         </div>
         @include('layouts.sidebar')
-
     </div>
+    <footer class="bg-dark text-light text-center py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Informations de contact</h4>
+                    <p>Adresse: Rue de la plaine 53</p>
+                    <p>Téléphone: +41 077 952 40 42 </p>
+                    <p>Email: bilaljanir@gmail.com</p>
+                </div>
+                <div class="col-md-6">
+                    <h4>Newsletter</h4>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1398041.1378619722!2d8.22421005!3d46.8131873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sch!4v1687523850074!5m2!1sfr!2sch" width="250" height="140" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </footer>
 @endsection
 
 @section('scripts')

@@ -6,7 +6,6 @@
 
 <script>
 export default {
-    methods: {
         addToFavorites() {
             axios.post('/api/addToFavorites', { articleId: 123 })
                 .then(response => {
@@ -16,7 +15,6 @@ export default {
                     console.error(error);
                 });
         }
-    }
 };
 </script>
 

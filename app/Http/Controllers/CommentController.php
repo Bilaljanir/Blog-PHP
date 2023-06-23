@@ -30,4 +30,5 @@ class CommentController extends Controller
         $comment->delete();
         return response()->json([], 200);
     }
+
 }

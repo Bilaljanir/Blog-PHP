@@ -11,6 +11,7 @@
                         <button v-if="can_delete" @click="deleteComment(comment.id)" class="btn btn-sm btn-danger">
                             <i class="fas fa-trash"></i>
                         </button>
+
                     </div>
                     <p>{{ comment.body }}</p>
                 </div>

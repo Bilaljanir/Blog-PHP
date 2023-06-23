@@ -143,6 +143,22 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row my-3">
+                            <div class="col-md-12">
+                                <div class="form-check d-flex justify-content-center">
+                                    <label for="tags" class="form-check-label">
+                                        Tags:
+                                    </label>
+                                    @foreach(\App\Models\Tag::all() as $tag)
+                                        <input type="checkbox"
+                                               {{$post->tags->contains($tag) ? 'checked' : ''}}
+                                               class="form-check-input mx-2" name="tags[]" id="tags"
+                                               value="{{$tag->id}}">
+                                        {{$tag->name}}
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-md-12 d-flex justify-content-end">
                                 <button type="submit" class="btn btn-primary">
