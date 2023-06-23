@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -28,7 +29,13 @@ class HomeController extends Controller
             'category' => $category,
         ]);
     }
-
+    public function postsByTag(Tag $tag): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    {
+        return view('home')->with([
+            'posts' => $tag->posts()->paginate(6),
+            'tags' => $tag
+        ]);
+    }
     public function changeLang($lang): \Illuminate\Http\RedirectResponse
     {
         session()->forget('lang');

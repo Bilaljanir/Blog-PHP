@@ -24,7 +24,7 @@
                             <i class="fas fa-user me-1"></i>
                             {{$post->admin->name}}
                             </span>
-                                                                <span class="badge bg-primary">
+                                    <span class="badge bg-primary">
                             <i class="fas fa-tag me-1"></i>
                             @if(session()->get('lang') === 'fr')
                                             {{$post->category->name_fr}}
@@ -75,7 +75,6 @@
                                 </div>
                                 <div class="row my-3">
                                     <div class="col-md-12">
-                                        Tags:
                                         @foreach ($post->tags as $tag)
                                             <a href="{{route('tag.posts',$tag)}}" class="btn btn-outline-secondary btn-sm mx-2">
                                                 {{$tag->name}}
@@ -85,7 +84,6 @@
                                 </div>
                                 <hr>
                                 <comments-count></comments-count>
-                                <hr>
                                 <hr>
                                 <comments-component :post_id="{{$post->id}}" :can_delete="{{ auth()->check() ? 'true' : 'false' }}" :current_user="{{ auth()->user() }}"></comments-component>
                                 @auth
