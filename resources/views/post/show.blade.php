@@ -16,11 +16,11 @@
                                  alt="{{$post->title_en}}">
                             <div class="card-body">
                                 <div class="d-flex justify-content-center my-3">
-                            <span class="badge bg-danger">
-                            <i class="fas fa-clock me-1"></i>
-                            {{$post->created_at->diffForHumans()}}
-                            </span>
-                                                                <span class="badge bg-success mx-2">
+                           <span class="badge bg-danger">
+                                    <i class="fas fa-clock me-1"></i>
+                                    {{$post->created_at->format('d/m/Y')}}
+                                </span>
+                                    <span class="badge bg-success mx-2">
                             <i class="fas fa-user me-1"></i>
                             {{$post->admin->name}}
                             </span>
@@ -104,8 +104,6 @@
                                         </form>
                                     @endif
                                 @endauth
-
-
                             @guest
                                     <div class="alert alert-info">
                                         <a href="{{route('login')}}"

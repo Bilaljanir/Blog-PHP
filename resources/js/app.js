@@ -9,6 +9,7 @@ import Search from './components/Search.vue';
 import AddToFavorites from "./components/AddToFavorites.vue";
 import SearchCanvas from './components/SearchCanvas.vue';
 
+
 const app = createApp({});
 const pinia = createPinia();
 
