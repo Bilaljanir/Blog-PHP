@@ -85,6 +85,11 @@
                     </div>
                 @endforeach
             </div>
+
+            <!-- Ajout de la pagination -->
+            <div class="d-flex justify-content-center mt-4">
+                {{ $posts->links() }}
+            </div>
         </div>
         @include('layouts.sidebar')
     </div>
@@ -119,4 +124,36 @@
     </footer>
 
 @endsection
-<style></style>
+<style>
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .pagination .page-item {
+        margin: 0 5px;
+    }
+
+    .pagination .page-link {
+        color: #343a40;
+        background-color: #f8f9fa;
+        border-color: #dee2e6;
+    }
+
+    .pagination .page-link:hover {
+        color: #fff;
+        background-color: #343a40;
+        border-color: #343a40;
+    }
+
+    .pagination .page-item.active .page-link {
+        z-index: 3;
+        color: #fff;
+        background-color: #343a40;
+        border-color: #343a40;
+    }
+
+
+
+</style>

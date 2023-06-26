@@ -6,7 +6,6 @@ import AddComment from './components/AddComment.vue';
 import CommentsCount from './components/CommentsCount.vue';
 import Comments from './components/Comments.vue';
 import Search from './components/Search.vue';
-import AddToFavorites from "./components/AddToFavorites.vue";
 import SearchCanvas from './components/SearchCanvas.vue';
 
 
@@ -16,7 +15,6 @@ const pinia = createPinia();
 app.component('comments-component', Comments);
 app.component('add-comment', AddComment);
 app.component('comments-count', CommentsCount);
-app.component('add-favorites',AddToFavorites);
 app.component('search-component', Search);
 app.component('search-canvas', SearchCanvas);
 

@@ -25,7 +25,3 @@ Route::get('comments/{post_id}', [CommentController::class, 'getPostComments']);
 Route::delete("comments/{comment}", [CommentController::class,'destroy']);
 Route::post('search', [HomeController::class, 'searchByTerm']);
 
-
-Route::post('/favorites', [FavoriteController::class, 'store'])->name('favorites.store');
-Route::delete('/favorites/{favorite}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
-Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');

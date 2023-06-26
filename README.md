@@ -43,21 +43,61 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés sur 
           php artisan serve
 
 
+
 ## Structure du projet
 
-* - app : Contient les classes principales de l'application Laravel. Le répertoire app/Models contient les modèles, tels que le modèle User pour représenter les utilisateurs et le modèle Article pour représenter les articles de blog. Le répertoire app/Controllers contient les contrôleurs qui gèrent les actions de l'application.
+Le projet suit une structure de répertoires Laravel standard. Voici une brève explication des principaux répertoires et fichiers :
+
+- `app` : Contient les classes principales de l'application Laravel, y compris les modèles, les contrôleurs et les politiques d'accès. Le modèle `User` représente les utilisateurs du système, tandis que le modèle `Article` représente les articles de blog.
 
 
-* - database : Contient les fichiers de migration et les seeders pour la base de données. Les migrations sont utilisées pour créer et modifier les tables de la base de données, tandis que les seeders permettent de remplir la base de données avec des données de test.
+- `config` : Contient les fichiers de configuration de l'application. Le fichier `config/app.php` permet de configurer divers aspects de l'application, y compris les fournisseurs de services.
 
 
-* - resources : Contient les ressources de l'application, telles que les fichiers JavaScript, CSS et les vues. Le répertoire resources/js contient les fichiers JavaScript, y compris le fichier app.js qui sert de point d'entrée à l'application Vue.js. Le répertoire resources/css contient les feuilles de style CSS. Le répertoire resources/views contient les fichiers de vue utilisés pour afficher les différentes pages de l'application.
+- `database` : Contient les fichiers de migration et les seeders pour la base de données. Les migrations sont utilisées pour créer les tables nécessaires pour le système d'authentification, les articles et les commentaires.
 
 
-* - routes : Contient les fichiers de définition des routes de l'application. Le fichier routes/web.php contient les routes pour les pages de l'application, tandis que le fichier routes/api.php contient les routes pour les API utilisées par Vue.js. Ces routes définissent les actions à effectuer lorsqu'une requête est faite à une certaine URL.
+- `resources` : Contient les ressources JavaScript, CSS et les vues du projet Vue.js. Les fichiers JavaScript se trouvent dans le répertoire `resources/js`, les fichiers CSS dans le répertoire `resources/css` et les fichiers de vue dans le répertoire `resources/views`.
 
 
-* - tests : Contient les tests automatisés pour les différentes fonctionnalités de l'application. Les tests unitaires se trouvent dans le répertoire tests/Unit, tandis que les tests de fonctionnalités sont stockés dans le répertoire tests/Feature. Ces tests permettent de vérifier que le code fonctionne correctement et de détecter les éventuels problèmes ou erreurs.
+- `routes` : Contient les fichiers de définition des routes de l'application. Le fichier `routes/web.php` contient les routes pour les pages de l'application, tandis que le fichier `routes/api.php` contient les routes pour les API utilisées par Vue.js.
 
 
-* - public : Contient les fichiers accessibles publiquement tels que les images, les feuilles de style CSS et les scripts JavaScript. Le fichier index.php situé à la racine du répertoire public est le point d'entrée de l'application Laravel, qui gère les requêtes et les dirige vers les contrôleurs appropriés.
+- `tests` : Contient les tests automatisés pour les différentes fonctionnalités de l'application. Les tests unitaires et les tests de fonctionnalités sont stockés respectivement dans les répertoires `tests/Unit` et `tests/Feature`.
+
+
+- `public` : Contient les fichiers accessibles publiquement tels que les images, les feuilles de style CSS et les scripts JavaScript. Le fichier `public/index.php` est le point d'entrée de l'application Laravel.
+
+---
+
+##  configure Bootstrap 
+
+        composer require laravel/ui
+        php artisan ui bootstrap --auth
+        npm install && npm run dev
+---
+
+## Créer les table avec les migration
+
+Les migrations sont comme un contrôle de version pour votre base de données, permettant à votre équipe de définir et de partager la définition du schéma de la base de données de l'application. Si vous avez déjà dû dire à un coéquipier d'ajouter manuellement une colonne au schéma de sa base de données locale après avoir intégré vos modifications depuis le contrôle de la source, vous avez été confronté au problème que les migrations de base de données permettent de résoudre.
+
+        EX:php artisan make:migration create_users_table
+---
+## Créer les models
+
+        php artisan make:model NomDuModele
+
+---
+
+## Créer les Controllers
+
+        php artisan make:controller NomDuController
+
+---
+
+## installer Pinia (bibliothèque de gestion d'état d'application pour Vue.js)
+
+        npm install pinia
+
+---
+
