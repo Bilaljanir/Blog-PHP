@@ -1,5 +1,5 @@
 <div class="col-md-4">
-    <div class="card">
+    <div class="card shadow">
         <div class="card-header bg-white">
             <h4>
                 @if(session()->get('lang') === 'fr')
@@ -10,8 +10,8 @@
             </h4>
         </div>
         <div class="card-body">
-            <ul class="list-group">
-                <li class="list-group-item d-flex justify-content-between align-items-center">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
                     <a href="{{url('/')}}" class="btn btn-link text-decoration-none text-dark">
                         @if(session()->get('lang') === 'fr')
                             Toutes les Posts
@@ -27,7 +27,7 @@
                     </a>
                 </li>
                 @foreach ($categories as $category)
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
                         <a href="{{route('category.posts', $category)}}" class="btn btn-link text-decoration-none text-dark">
                             @if(session()->get('lang') === 'fr')
                                 {{$category->name_fr}}
@@ -44,3 +44,17 @@
         </div>
     </div>
 </div>
+
+<script>
+    // Récupérez tous les éléments de catégorie
+    const categoryItems = document.querySelectorAll('.list-group-item-action');
+    categoryItems.forEach(item => {
+        // Ajoutez un écouteur d'événement pour le survol
+        item.addEventListener('mouseover', () => {
+            item.classList.add('shadow-lg');
+        });
+        item.addEventListener('mouseout', () => {
+            item.classList.remove('shadow-lg');
+        });
+    });
+</script>

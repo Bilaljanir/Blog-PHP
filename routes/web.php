@@ -6,7 +6,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\TvController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,4 +41,3 @@ Route::prefix('admin')->group(function() {
 Route::get('/create')->name('admin.create');
 Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
 
-Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar');

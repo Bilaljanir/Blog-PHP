@@ -127,7 +127,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <label for="photo" class="col-sm- col-form-label">
-                                        Image*
+                                        Image
                                     </label>
                                     <div class="col-sm-">
                                         <input type="file"

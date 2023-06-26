@@ -126,16 +126,30 @@
                 <div class="col-md-6">
                     <h4>Informations de contact</h4>
                     <p>Adresse: Rue de la plaine 53</p>
-                    <p>Téléphone: +41 077 952 40 42 </p>
+                    <p>Téléphone: +41 077 952 40 42</p>
                     <p>Email: bilaljanir@gmail.com</p>
                 </div>
                 <div class="col-md-6">
                     <h4>Newsletter</h4>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1398041.1378619722!2d8.22421005!3d46.8131873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sch!4v1687523850074!5m2!1sfr!2sch" width="250" height="140" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="d-flex justify-content-center">
+                        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-instagram fa-2x mx-3"></i>
+                        </a>
+                        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-facebook-f fa-2x mx-3"></i>
+                        </a>
+                        <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-youtube fa-2x mx-3"></i>
+                        </a>
+                        <a href="https://www.twitter.com/" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-twitter fa-2x mx-3"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </footer>
+
 @endsection
 
 @section('scripts')
