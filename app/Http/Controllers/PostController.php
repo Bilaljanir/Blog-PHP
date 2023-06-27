@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tag;
+use App\Models\Favorite;
 use App\Models\Post;
+use App\Models\Tag;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\StorePostRequest;
@@ -147,6 +149,17 @@ class PostController extends Controller
         return redirect()->route('posts.index')->with([
             'success' => 'Post deleted successfully'
         ]);
+    }
+
+    public function addToFavorites(Post $post): \Illuminate\Http\RedirectResponse
+    {
+
+        $favorite = new Favorite();
+        $favorite->post_id = $post->id;
+        $favorite->user_id = auth()->user()->id;
+        $favorite->save();
+
+        return redirect()->back();
     }
 
 }

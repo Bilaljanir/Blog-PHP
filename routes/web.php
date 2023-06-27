@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
@@ -39,4 +40,10 @@ Route::prefix('admin')->group(function() {
 });
 Route::get('/create')->name('admin.create');
 Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
+
+Route::get('/favors', [PostController::class, 'indexFavorites'])->name('favors.index');
+
+Route::post('/favors/{post}', [PostController::class, 'addToFavorites'])->name('favors.add');
+Route::get('/favorites', [FavoriteController::class, 'index'])->name('favors.index');
+
 

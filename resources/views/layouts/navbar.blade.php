@@ -97,6 +97,18 @@
                         </a>
                     </li>
                 @endauth
+                <li class="nav-item">
+                    @auth
+                        <a class="nav-link" href="{{ route('favors.index') }}">
+                            <i class="fas fa-heart"></i>
+                            Favoris
+                            <span class="badge bg-danger">{{ auth()->check() ? auth()->user()->favorites->count() : 0 }}</span>
+                        </a>
+                    @endauth
+                </li>
+
+
+
             </ul>
         </div>
         <search-component></search-component>

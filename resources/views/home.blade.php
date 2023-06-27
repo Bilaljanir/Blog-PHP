@@ -50,40 +50,47 @@
                     @endforeach
                 @endisset
 
-                @foreach ($posts as $post)
-                    <div class="col my-lg-1">
-                        <div class="card h-100">
-                            <img src="{{ asset($post->photo) }}"
-                                 class="card-img-top img-fluid w-100"
-                                 alt="{{ $post->title_fr }}">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title fw-bold">
-                                    @if(session()->get('lang') === 'fr')
-                                        {{ $post->title_fr }}
-                                    @else
-                                        {{ $post->title_en }}
-                                    @endif
-                                </h5>
-                                <p class="card-text flex-grow-1">
-                                    @if(session()->get('lang') === 'fr')
-                                        {{ Str::limit($post->body_fr, 100) }}
-                                    @else
-                                        {{ Str::limit($post->body_en, 100) }}
-                                    @endif
-                                </p>
+                    @foreach ($posts as $post)
+                        <div class="col my-lg-1">
+                            <div class="card h-100">
+                                <img src="{{ asset($post->photo) }}" class="card-img-top img-fluid w-100" alt="{{ $post->title_fr }}">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title fw-bold">
+                                        @if(session()->get('lang') === 'fr')
+                                            {{ $post->title_fr }}
+                                        @else
+                                            {{ $post->title_en }}
+                                        @endif
+                                    </h5>
+                                    <p class="card-text flex-grow-1">
+                                        @if(session()->get('lang') === 'fr')
+                                            {{ Str::limit($post->body_fr, 100) }}
+                                        @else
+                                            {{ Str::limit($post->body_en, 100) }}
+                                        @endif
+                                    </p>
 
-                                <a href="{{ route('posts.show', $post) }}" class="btn btn-primary mt-2">
-                                    <i class="fas fa-eye"></i>
-                                    @if(session()->get('lang') === 'fr')
-                                        Voir
-                                    @else
-                                        View
-                                    @endif
-                                </a>
+                                    <a href="{{ route('posts.show', $post) }}" class="btn btn-primary mt-2">
+                                        <i class="fas fa-eye"></i>
+                                        @if(session()->get('lang') === 'fr')
+                                            Voir
+                                        @else
+                                            View
+                                        @endif
+                                    </a>
+                                    <form action="{{ route('favors.add', $post) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-outline-danger mt-2">
+                                            <i class="fas fa-heart{{ $post->favorite ? ' filled' : '' }}"></i>
+                                            Ajouter aux favoris
+                                        </button>
+                                    </form>
+
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+
             </div>
 
             <!-- Ajout de la pagination -->
@@ -153,7 +160,20 @@
         background-color: #343a40;
         border-color: #343a40;
     }
+    .btn-outline-danger.favorite-btn {
+        color: #dc3545;
+        border-color: #dc3545;
+    }
 
+    .btn-outline-danger.favorite-btn:hover {
+        color: #fff;
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+    .fa-heart.filled {
+        color: #dc3545;
+    }
 
 
 </style>

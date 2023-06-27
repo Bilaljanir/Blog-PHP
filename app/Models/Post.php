@@ -13,7 +13,7 @@ class Post extends Model
     protected $fillable = [
         'title_fr','title_en','body_fr','body_en',
         'photo','category_id','admin_id','slug',
-        'published','premium'
+        'published','premium','favorite'
     ];
 
     public function admin(): \Illuminate\Database\Eloquent\Relations\BelongsTo
