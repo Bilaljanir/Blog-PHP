@@ -10,7 +10,7 @@
 
 <style>
 .logo-button {
-    font-size: 20px;
+    font-size: 15px;
     color: #000;
 }
 

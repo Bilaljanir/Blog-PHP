@@ -78,13 +78,31 @@
                                             View
                                         @endif
                                     </a>
-                                    <form action="{{ route('favors.add', $post->id) }}" method="POST">
+                                    <form id="favorForm" action="{{ route('favors.add', $post->id) }}" method="POST">
                                         @csrf
                                         <button type="submit" class="btn btn-outline-danger mt-2">
                                             <i class="fas fa-heart"></i>
                                             Ajouter aux favoris
                                         </button>
                                     </form>
+
+                                    <script>
+                                        document.getElementById('favorForm').addEventListener('submit', function(event) {
+                                            event.preventDefault(); // Empêche le comportement par défaut du formulaire
+                                            // Effectuez ici les actions supplémentaires que vous souhaitez effectuer sans rafraîchir la page
+
+                                            // Par exemple, vous pouvez envoyer une requête AJAX au serveur pour ajouter les favoris
+                                            var xhr = new XMLHttpRequest();
+                                            xhr.open('POST', "{{ route('favors.add', $post->id) }}", true);
+                                            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                                            xhr.onload = function() {
+                                                // Traitez la réponse du serveur ici
+                                            };
+                                            xhr.send();
+
+                                            return false; // Facultatif, assurez-vous que la soumission du formulaire ne rafraîchit pas la page
+                                        });
+                                    </script>
 
 
                                 </div>
@@ -175,6 +193,5 @@
     .fa-heart.filled {
         color: #dc3545;
     }
-
 
 </style>

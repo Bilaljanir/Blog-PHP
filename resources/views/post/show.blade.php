@@ -85,7 +85,7 @@
                                 </div>
                                 <hr>
                                 <comments-count></comments-count>
-                                <hr>
+
                                 <comments-component :post_id="{{$post->id}}" :can_delete="{{ auth()->check() ? 'true' : 'false' }}" :current_user="{{ auth()->user() }}"></comments-component>
                                 @auth
                                     @if (auth()->user()->hasVerifiedEmail())

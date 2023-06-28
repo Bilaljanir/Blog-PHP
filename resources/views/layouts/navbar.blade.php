@@ -98,15 +98,19 @@
                     </li>
                 @endauth
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('favorites.index') }}">
-                        <i class="fas fa-heart"></i>
-                        Favoris
-                        @if(auth()->user())
+                    @auth
+                        <a class="nav-link" href="{{ route('favorites.index') }}">
+                            <i class="fas fa-heart"></i>
+                            Favoris
                             <span class="badge bg-danger">{{ auth()->user()->favorites->count() }}</span>
-                        @else
+                        </a>
+                    @else
+                        <a class="nav-link" href="{{ route('login') }}">
+                            <i class="fas fa-heart"></i>
+                            Favoris
                             <span class="badge bg-danger">0</span>
-                        @endif
-                    </a>
+                        </a>
+                    @endauth
                 </li>
 
 

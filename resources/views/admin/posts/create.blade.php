@@ -67,7 +67,7 @@
                                                 class="form-control @error('category_id') is-invalid @enderror">
                                             <option selected disabled>Choose a category</option>
                                             @foreach ($categories as $category)
-                                                <option value="{{$category->id}}">{{$category->name_en}}</option>
+                                                <option value="{{$category->id}}">{{$category->name_fr}}</option>
                                             @endforeach
                                         </select>
                                         @error('category_id')

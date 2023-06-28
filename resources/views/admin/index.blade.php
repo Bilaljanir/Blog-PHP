@@ -40,7 +40,7 @@
                                         </a>
                                     </td>
                                     <td>{{ $post->title_fr }}</td>
-                                    <td>{{ $post->category->name_en }}</td>
+                                    <td>{{ $post->category->name_fr}}</td>
                                     <td>{{ $post->admin->name }}</td>
                                     <td>
                                         <img src="{{ asset($post->photo) }}"

@@ -1,18 +1,25 @@
+
 <template>
     <form @submit.prevent="addComment">
-        <div class="mb-2">
+        <div class="input-group mb-2">
             <textarea
-                placeholder="start typing..."
+                placeholder="Start typing..."
                 v-model="data.body"
                 :required="true"
-                class="form-control" cols="30" rows="3"
-                @keydown.enter="addCommentOnEnter"></textarea>
+                class="form-control"
+                cols="10"
+                rows="1"
+                @keydown.enter="addCommentOnEnter"
+            ></textarea>
+            <button type="submit" class="btn btn-primary"
+                    rows="1">
+                
+                <i class="fas fa-paper-plane"></i>
+            </button>
         </div>
-        <button type="submit" class="btn btn-primary">
-            Add
-        </button>
     </form>
 </template>
+
 
 <script setup>
 import { reactive } from 'vue';

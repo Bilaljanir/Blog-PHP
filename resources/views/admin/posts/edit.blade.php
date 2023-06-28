@@ -70,7 +70,7 @@
                                             @foreach ($categories as $category)
                                                 <option
                                                     {{$post->category_id === $category->id ? 'selected' : ''}}
-                                                    value="{{$category->id}}">{{$category->name_en}}</option>
+                                                    value="{{$category->id}}">{{$category->name_fr}}</option>
                                             @endforeach
                                         </select>
                                         @error('category_id')

@@ -12,5 +12,10 @@ class FavoriteController extends Controller
         $favorites = Favorite::where('user_id', auth()->user()->id)->get();
         return view('/favorites', compact('favorites'));
     }
-
+    public function add(Request $postId)
+    {
+        $favorite = new Favorite();
+        $favorite->post_id = $postId;
+        $favorite->save();
+    }
     }
