@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Favorite;
 use App\Models\Post;
 use App\Models\Tag;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
@@ -151,15 +152,24 @@ class PostController extends Controller
         ]);
     }
 
-    public function addToFavorites(Post $post): \Illuminate\Http\RedirectResponse
+    public function indexFavorites()
     {
+        $favorites = auth()->user()->favorites;
 
-        $favorite = new Favorite();
-        $favorite->post_id = $post->id;
-        $favorite->user_id = auth()->user()->id;
-        $favorite->save();
+        return view('favorites', compact('favorites'));
+    }
+
+    public function Favorites($postId)
+    {
+        $post = Post::find($postId);
+        $user = auth()->user();
+
+        if ($post && $user) {
+            $user->favorites()->attach($post->id);
+        }
 
         return redirect()->back();
     }
+
 
 }

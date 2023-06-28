@@ -78,13 +78,14 @@
                                             View
                                         @endif
                                     </a>
-                                    <form action="{{ route('favors.add', $post) }}" method="POST">
+                                    <form action="{{ route('favors.add', $post->id) }}" method="POST">
                                         @csrf
                                         <button type="submit" class="btn btn-outline-danger mt-2">
-                                            <i class="fas fa-heart{{ $post->favorite ? ' filled' : '' }}"></i>
+                                            <i class="fas fa-heart"></i>
                                             Ajouter aux favoris
                                         </button>
                                     </form>
+
 
                                 </div>
                             </div>

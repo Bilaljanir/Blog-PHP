@@ -44,15 +44,5 @@ class AdminController extends Controller
         auth()->guard('admin')->logout();
         return redirect()->route('admin.loginForm');
     }
-    public function destroy($id)
-    {
-        $comment = Comment::findOrFail($id);
-        if ($comment->user_id === auth()->user()->id) {
-            $comment->delete();
-            return response()->json(['message' => 'Comment deleted successfully']);
-        } else {
-            return response()->json(['message' => 'Unauthorized'], 403);
-        }
-    }
 
 }

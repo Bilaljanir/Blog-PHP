@@ -101,3 +101,16 @@ Les migrations sont comme un contrôle de version pour votre base de données, p
 
 ---
 
+## Configuration de l'image dans le fichier php.ini
+
+Pour que les utilisateurs puissent augmenter la taille maximale des fichiers image téléchargés dans leur application Laravel, ils doivent configurer les paramètres appropriés dans le fichier php.ini. Voici les étapes à suivre :
+
+1. Ouvrez un terminal.
+2. Exécutez la commande suivante pour ouvrir le fichier php.ini avec un éditeur de texte :
+                 
+        sudo nano /etc/php/X.X/apache2/php.ini
+3. Recherchez les paramètres suivants dans le fichier php.ini et modifiez-les selon vos besoins
+                     
+         upload_max_filesize = 2M
+         post_max_size = 8M
+

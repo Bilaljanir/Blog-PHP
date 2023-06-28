@@ -12,7 +12,7 @@ class Comment extends Model
 
     protected $table = 'comments';
     protected $fillable = [
-        'user_id','post_id','body'
+        'user_id', 'post_id', 'body'
     ];
 
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -24,6 +24,7 @@ class Comment extends Model
     {
         return Carbon::parse($value)->diffForHumans();
     }
+
     public function post()
     {
         return $this->belongsTo(Post::class);

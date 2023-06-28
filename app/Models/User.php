@@ -42,10 +42,13 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function favorites(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function posts()
     {
-        return $this->belongsToMany(Post::class, 'favors', 'user_id', 'post_id')->withTimestamps();
+        return $this->hasMany(Post::class);
     }
 
-
+    public function favorites(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Post::class, 'favorites', 'user_id', 'post_id');
+    }
 }

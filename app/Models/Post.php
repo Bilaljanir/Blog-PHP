@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Post extends Model
 {
@@ -13,7 +14,7 @@ class Post extends Model
     protected $fillable = [
         'title_fr','title_en','body_fr','body_en',
         'photo','category_id','admin_id','slug',
-        'published','premium','favorite'
+        'published','premium','favorites'
     ];
 
     public function admin(): \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -51,5 +52,15 @@ class Post extends Model
     public function getRouteKeyName(): string
     {
         return 'slug';
+    }
+
+    public function favorites()
+    {
+        return $this->belongsToMany(Favorite::class, 'favorites', 'post_id', 'user_id');
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'favorites', 'post_id', 'user_id');
     }
 }

@@ -41,9 +41,5 @@ Route::prefix('admin')->group(function() {
 Route::get('/create')->name('admin.create');
 Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
 
-Route::get('/favors', [PostController::class, 'indexFavorites'])->name('favors.index');
-
-Route::post('/favors/{post}', [PostController::class, 'addToFavorites'])->name('favors.add');
-Route::get('/favorites', [FavoriteController::class, 'index'])->name('favors.index');
-
-
+Route::get('/favorites', [PostController::class, 'indexFavorites'])->name('favorites.index');
+Route::post('/favors/{post}', [PostController::class, 'Favorites'])->name('favors.add');
